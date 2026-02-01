@@ -1,0 +1,27 @@
+{
+  "home": {
+    "hero_title": "Discover events in your language",
+    "hero_description": "PolyEvent removes language barriers from global events. Organizers write once. Attendees read, comment, and engage in their own language.",
+    "explore_events": "Explore Events",
+    "create_event": "Create an Event",
+    "features": {
+      "auto_translation": {
+        "title": "Automatic Translation",
+        "description": "Events and discussions are translated automatically using Lingo.dev — no manual localization required."
+      },
+      "multilingual_discussions": {
+        "title": "Multilingual Discussions",
+        "description": "Comment in your own language. Others read it in theirs. Original text is always preserved."
+      },
+      "built_for_web": {
+        "title": "Built for the Web",
+        "description": "Built with Next.js, Supabase, and modern server-first architecture for speed and reliability."
+      }
+    },
+    "cta": {
+      "title": "Hosting an international event?",
+      "description": "Stop worrying about language. Focus on the experience.",
+      "button": "Create Your Event"
+    }
+  }
+}
