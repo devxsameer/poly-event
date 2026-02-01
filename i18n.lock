@@ -1,4 +1,16 @@
 version: 1
 checksums:
   4188a166aad2705b4f09401f924502ed:
-    greeting: e5c4880fef990edc98e20db92aff718d
+    home/hero_title: d345f31802e288297733770ab032063b
+    home/hero_description: fb1e5fae73303b84453b6e00dab3256f
+    home/explore_events: a1d19af2aa89fa516ac21f68d1b1583c
+    home/create_event: 2d43c5fa8be8c20b9b71b26bb834f42c
+    home/features/auto_translation/title: 93c6f0da0aa33697a795d45cee0394a8
+    home/features/auto_translation/description: 603468f58c1039d883e696f5535ed3ae
+    home/features/multilingual_discussions/title: 248438deea6d2ba540c6779e0e565844
+    home/features/multilingual_discussions/description: d2f8ba8958bcde3646a4d2eb0118131f
+    home/features/built_for_web/title: eda59866f440e2ee6e0ba24c0fd36155
+    home/features/built_for_web/description: f0722acf2188ff807c931aa58e084ff4
+    home/cta/title: 6a8b2787ea04985065760c12377db141
+    home/cta/description: b25c1287e14395482cad428373b7beba
+    home/cta/button: 14720774785385bf528b33a6d5273166

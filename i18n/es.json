@@ -1,3 +1,27 @@
 {
-  "greeting": "Hola desde Lingo.dev"
+  "home": {
+    "hero_title": "Descubre eventos en tu idioma",
+    "hero_description": "PolyEvent elimina las barreras lingüísticas de los eventos globales. Los organizadores escriben una vez. Los asistentes leen, comentan e interactúan en su propio idioma.",
+    "explore_events": "Explorar eventos",
+    "create_event": "Crear un evento",
+    "features": {
+      "auto_translation": {
+        "title": "Traducción automática",
+        "description": "Los eventos y las discusiones se traducen automáticamente usando Lingo.dev, sin necesidad de localización manual."
+      },
+      "multilingual_discussions": {
+        "title": "Discusiones multilingües",
+        "description": "Comenta en tu propio idioma. Los demás lo leen en el suyo. El texto original siempre se conserva."
+      },
+      "built_for_web": {
+        "title": "Creado para la web",
+        "description": "Desarrollado con Next.js, Supabase y arquitectura moderna orientada al servidor para velocidad y confiabilidad."
+      }
+    },
+    "cta": {
+      "title": "¿Organizas un evento internacional?",
+      "description": "Deja de preocuparte por el idioma. Concéntrate en la experiencia.",
+      "button": "Crea tu evento"
+    }
+  }
 }
