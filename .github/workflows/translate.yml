@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Lingo.dev
+      - name: Lingo.dev translate
         uses: lingodotdev/lingo.dev@main
         with:
           api-key: ${{ secrets.LINGODOTDEV_API_KEY }}
