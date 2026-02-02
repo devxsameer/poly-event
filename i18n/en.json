@@ -1,9 +1,24 @@
 {
+  "common": {
+    "go_home": "Go home",
+    "login": "Login",
+    "logout": "Logout",
+    "loading": "Loading",
+    "error": "Something went wrong"
+  },
+
+  "errors": {
+    "not_found": "The page you're looking for doesn't exist.",
+    "unauthorized": "You don't have access to this page.",
+    "unexpected": "An unexpected error occurred. Please try again."
+  },
+
   "home": {
     "hero_title": "Discover events in your language",
     "hero_description": "PolyEvent removes language barriers from global events. Organizers write once. Attendees read, comment, and engage in their own language.",
     "explore_events": "Explore Events",
     "create_event": "Create an Event",
+
     "features": {
       "auto_translation": {
         "title": "Automatic Translation",
@@ -18,6 +33,7 @@
         "description": "Built with Next.js, Supabase, and modern server-first architecture for speed and reliability."
       }
     },
+
     "cta": {
       "title": "Hosting an international event?",
       "description": "Stop worrying about language. Focus on the experience.",
