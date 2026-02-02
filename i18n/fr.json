@@ -4,7 +4,8 @@
     "login": "Se connecter",
     "logout": "Se déconnecter",
     "loading": "Chargement",
-    "error": "Une erreur s'est produite"
+    "error": "Une erreur s'est produite",
+    "back": "Retour"
   },
   "nav": {
     "brand_tagline": "Événements multilingues",
@@ -16,6 +17,40 @@
     "not_found": "La page que vous recherchez n'existe pas.",
     "unauthorized": "Vous n'avez pas accès à cette page.",
     "unexpected": "Une erreur inattendue s'est produite. Veuillez réessayer."
+  },
+  "auth": {
+    "welcome_back": "Bon retour",
+    "sign_in_to_continue": "Connectez-vous pour continuer",
+    "check_your_email": "Vérifiez votre e-mail",
+    "code_sent_to": "Code envoyé à",
+    "continue_with_github": "Continuer avec GitHub",
+    "or_continue_with_email": "ou continuer avec l'e-mail",
+    "email_placeholder": "nom@exemple.com",
+    "continue_with_email": "Continuer avec l'e-mail",
+    "sending_code": "Envoi du code...",
+    "enter_code": "Saisir le code",
+    "code_hint": "Saisissez le code à 6-8 chiffres de votre e-mail",
+    "verify_and_sign_in": "Vérifier et se connecter",
+    "verifying": "Vérification...",
+    "resend_code": "Renvoyer le code",
+    "terms_agreement": "En continuant, vous acceptez nos",
+    "terms_of_service": "Conditions d'utilisation",
+    "and": "et",
+    "privacy_policy": "Politique de confidentialité",
+    "toast": {
+      "code_sent": "Code envoyé !",
+      "check_inbox": "Vérifiez votre boîte de réception à",
+      "welcome_back": "Bon retour !",
+      "redirecting": "Redirection en cours...",
+      "error": "Une erreur s'est produite",
+      "failed_to_send": "Échec de l'envoi du code",
+      "verification_failed": "Échec de la vérification",
+      "invalid_code": "Code invalide ou expiré",
+      "new_code_sent": "Nouveau code envoyé !",
+      "resend_failed": "Impossible de renvoyer le code",
+      "invalid_email": "Veuillez saisir une adresse e-mail valide",
+      "enter_full_code": "Veuillez saisir le code de vérification complet"
+    }
   },
   "home": {
     "badge": "Conçu pour les communautés mondiales",

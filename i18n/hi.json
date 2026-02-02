@@ -4,7 +4,8 @@
     "login": "लॉग इन करें",
     "logout": "साइन आउट करें",
     "loading": "लोड हो रहा है",
-    "error": "कुछ गलत हो गया"
+    "error": "कुछ गलत हो गया",
+    "back": "वापस"
   },
   "nav": {
     "brand_tagline": "बहुभाषी इवेंट",
@@ -16,6 +17,40 @@
     "not_found": "आप जिस पेज को खोज रहे हैं वह मौजूद नहीं है।",
     "unauthorized": "आपके पास इस पेज तक पहुंच नहीं है।",
     "unexpected": "एक अप्रत्याशित त्रुटि हुई। कृपया पुनः प्रयास करें।"
+  },
+  "auth": {
+    "welcome_back": "वापस स्वागत है",
+    "sign_in_to_continue": "जारी रखने के लिए साइन इन करें",
+    "check_your_email": "अपना ईमेल जांचें",
+    "code_sent_to": "कोड भेजा गया",
+    "continue_with_github": "GitHub के साथ जारी रखें",
+    "or_continue_with_email": "या ईमेल के साथ जारी रखें",
+    "email_placeholder": "name@example.com",
+    "continue_with_email": "ईमेल के साथ जारी रखें",
+    "sending_code": "कोड भेजा जा रहा है...",
+    "enter_code": "कोड दर्ज करें",
+    "code_hint": "अपने ईमेल से 6-8 अंकों का कोड दर्ज करें",
+    "verify_and_sign_in": "सत्यापित करें और साइन इन करें",
+    "verifying": "सत्यापित किया जा रहा है...",
+    "resend_code": "कोड फिर से भेजें",
+    "terms_agreement": "जारी रखकर, आप हमारी सहमति देते हैं",
+    "terms_of_service": "सेवा की शर्तें",
+    "and": "और",
+    "privacy_policy": "गोपनीयता नीति",
+    "toast": {
+      "code_sent": "कोड भेज दिया गया!",
+      "check_inbox": "अपना इनबॉक्स जांचें",
+      "welcome_back": "वापस स्वागत है!",
+      "redirecting": "अब आपको रीडायरेक्ट किया जा रहा है...",
+      "error": "कुछ गलत हो गया",
+      "failed_to_send": "कोड भेजने में विफल",
+      "verification_failed": "सत्यापन विफल रहा",
+      "invalid_code": "अमान्य या समाप्त कोड",
+      "new_code_sent": "नया कोड भेजा गया!",
+      "resend_failed": "कोड पुनः नहीं भेजा जा सका",
+      "invalid_email": "कृपया एक मान्य ईमेल पता दर्ज करें",
+      "enter_full_code": "कृपया पूरा सत्यापन कोड दर्ज करें"
+    }
   },
   "home": {
     "badge": "वैश्विक समुदायों के लिए बनाया गया",

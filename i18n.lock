@@ -6,6 +6,7 @@ checksums:
     common/logout: 6d842546a84e919c519bf8cbffdf25a0
     common/loading: c6bc8c380e83336c81a92594d3f23000
     common/error: a3cd2f01c073f1f5ff436d4b132d39cf
+    common/back: f541015a827e37cb3b1234e56bc2aa3c
     nav/brand_tagline: 271039c866bde80d40e2539b3d6a9d00
     nav/events: d17179a947e9687dd2338ca524b26b63
     nav/create: 757ccd28dd533ff3a933355273c1e32a
@@ -13,6 +14,36 @@ checksums:
     errors/not_found: bc60a89540a83277acafc260831eb75b
     errors/unauthorized: bfec21e17f94e2ab40a7854a3c56f6a4
     errors/unexpected: dd9aef0a9c3638442bc8f6151feb33d6
+    auth/welcome_back: 4928884739ba559e6e4b960e80fe1452
+    auth/sign_in_to_continue: a9ab1490937edc8f18d41de9f6f94b84
+    auth/check_your_email: c51aa8640fe15af146f3e2dd4602e0c1
+    auth/code_sent_to: c7dc190a4f41cabd04caf40db2ad1b25
+    auth/continue_with_github: 38afe2cfdd9c3d85474eb9a4319313f5
+    auth/or_continue_with_email: 57daafbd02ebf8e5485f1a0042991904
+    auth/email_placeholder: 03e1a04b846b5c2d57591802c4f12c1e
+    auth/continue_with_email: ffa84b192fae5cd6611815ba61582f24
+    auth/sending_code: ea015835a62c941e1193160b443d7930
+    auth/enter_code: be64c0ac26c35f0fd031af04f6b8cdf2
+    auth/code_hint: 3f9ae4a876fdc7b13d5f846af02eeb04
+    auth/verify_and_sign_in: cda0c9c43da44a2a945554fde0ceb45e
+    auth/verifying: 421ed451e3e4b14dc2dcf25956fca011
+    auth/resend_code: b325af34ff383c5eb34e624617fb450a
+    auth/terms_agreement: a4a9eb74eb4861d547ebad01a3858ba2
+    auth/terms_of_service: 5add91f519e39025708e54a7eb7a9fc5
+    auth/and: ce8b9bb44f031705708a70e068bb73c8
+    auth/privacy_policy: 7459744a63ef8af4e517a09024bd7c08
+    auth/toast/code_sent: f3fcb73dc0076404b1396322c98797ff
+    auth/toast/check_inbox: 075a22441449f91a6752aa042ac77bbb
+    auth/toast/welcome_back: 69eb28c44f7168b1df0455ad2a62588c
+    auth/toast/redirecting: a33fdb3bd061785faef06e556e820779
+    auth/toast/error: a3cd2f01c073f1f5ff436d4b132d39cf
+    auth/toast/failed_to_send: 51b7b489aebccff6929a70a5981da661
+    auth/toast/verification_failed: e8cc2a0c12f97985b404320423cd927b
+    auth/toast/invalid_code: 7a80052fb1534fb685d6f39c31238c94
+    auth/toast/new_code_sent: bd51ef5f19653d151c478fbc3dceedbc
+    auth/toast/resend_failed: 7b46ac418efd578a44f950fe91c2b7e9
+    auth/toast/invalid_email: 8de4bc8832b11b380bc4cbcedc16e48b
+    auth/toast/enter_full_code: e5b6c4e9574a54b1dd8c2dbcb49f8b2c
     home/badge: e5f98a384ebfd5c6d8241aaa9f82286a
     home/hero_title: d345f31802e288297733770ab032063b
     home/hero_description: 44bef0799603fad2d17220ea36f0e2a0

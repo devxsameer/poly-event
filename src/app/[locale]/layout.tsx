@@ -1,18 +1,29 @@
 // app/[locale]/layout.tsx
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
-import { Outfit } from "next/font/google";
+import { Hind, Outfit } from "next/font/google";
 import "@/styles/globals.css";
 
 import { Navbar } from "@/components/navbar/navbar";
+import { TopLoader } from "@/components/ui/top-loader";
+import { AuthSuccessToast } from "@/features/auth/components/auth-success-toast";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { defaultLocale, locales } from "@/features/i18n/config";
 import { Toaster } from "sonner";
 import { getDictionary } from "@/features/i18n/get-dictionary";
+import { Suspense } from "react";
 
 const outfit = Outfit({
-  variable: "--font-outfit",
+  variable: "--font-sans",
   subsets: ["latin"],
+  display: "swap",
+});
+
+const hind = Hind({
+  weight: ["400", "500", "700"],
+  variable: "--font-hind",
+  subsets: ["devanagari"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -33,6 +44,9 @@ export default async function LocaleLayout({
 }) {
   const { locale } = await params;
 
+  const isRTL = locale === "ar" || locale === "he";
+  const fontStrategy = locale === "hi" ? "font-hindi" : "font-sans";
+
   if (!locales.includes(locale as (typeof locales)[number])) {
     redirect(`/${defaultLocale}/not-found`);
   }
@@ -44,10 +58,24 @@ export default async function LocaleLayout({
   } = await supabase.auth.getUser();
 
   return (
-    <html lang={locale}>
-      <body className={`${outfit.variable} antialiased`}>
+    <html
+      lang={locale}
+      dir={isRTL ? "rtl" : "ltr"}
+      className="dark"
+      suppressHydrationWarning
+    >
+      <head>
+        <meta name="theme-color" content="#000000" />
+      </head>
+      <body
+        className={`${outfit.variable} ${hind.variable} ${fontStrategy} antialiased`}
+      >
+        <Suspense fallback={null}>
+          <TopLoader />
+          <AuthSuccessToast />
+        </Suspense>
         <Navbar user={user} dict={dict} />
-        <Toaster />
+        <Toaster theme="dark" />
         {children}
       </body>
     </html>

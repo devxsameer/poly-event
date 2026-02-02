@@ -13,6 +13,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { locales, type Locale } from "@/features/i18n/config";
 import { setPreferredLocale } from "@/features/i18n/locale.actions";
+import { triggerTopLoader } from "@/components/ui/top-loader";
 
 interface LanguageSwitcherProps {
   currentLocale: Locale;
@@ -33,6 +34,9 @@ export function LanguageSwitcher({
   }
 
   function onSelect(locale: Locale) {
+    if (locale === currentLocale) return;
+
+    triggerTopLoader();
     startTransition(async () => {
       await setPreferredLocale(locale);
       router.push(getHref(locale));
@@ -40,7 +44,7 @@ export function LanguageSwitcher({
   }
 
   return (
-    <DropdownMenu>
+    <DropdownMenu modal={false}>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" size="sm" disabled={pending}>
           <Globe className="h-4 w-4 mr-2" />

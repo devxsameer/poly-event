@@ -4,7 +4,8 @@
     "login": "Iniciar sesión",
     "logout": "Cerrar sesión",
     "loading": "Cargando",
-    "error": "Algo salió mal"
+    "error": "Algo salió mal",
+    "back": "Atrás"
   },
   "nav": {
     "brand_tagline": "Eventos multilingües",
@@ -16,6 +17,40 @@
     "not_found": "La página que buscas no existe.",
     "unauthorized": "No tienes acceso a esta página.",
     "unexpected": "Ocurrió un error inesperado. Por favor, inténtalo de nuevo."
+  },
+  "auth": {
+    "welcome_back": "Bienvenido de nuevo",
+    "sign_in_to_continue": "Inicia sesión para continuar",
+    "check_your_email": "Revisa tu correo electrónico",
+    "code_sent_to": "Código enviado a",
+    "continue_with_github": "Continuar con GitHub",
+    "or_continue_with_email": "o continuar con correo electrónico",
+    "email_placeholder": "nombre@ejemplo.com",
+    "continue_with_email": "Continuar con correo electrónico",
+    "sending_code": "Enviando código...",
+    "enter_code": "Introduce el código",
+    "code_hint": "Introduce el código de 6-8 dígitos de tu correo electrónico",
+    "verify_and_sign_in": "Verificar e iniciar sesión",
+    "verifying": "Verificando...",
+    "resend_code": "Reenviar código",
+    "terms_agreement": "Al continuar, aceptas nuestros",
+    "terms_of_service": "Términos de servicio",
+    "and": "y",
+    "privacy_policy": "Política de privacidad",
+    "toast": {
+      "code_sent": "¡Código enviado!",
+      "check_inbox": "Revisa tu bandeja de entrada en",
+      "welcome_back": "¡Bienvenido de nuevo!",
+      "redirecting": "Redirigiendo ahora...",
+      "error": "Algo salió mal",
+      "failed_to_send": "Error al enviar el código",
+      "verification_failed": "Verificación fallida",
+      "invalid_code": "Código inválido o caducado",
+      "new_code_sent": "¡Nuevo código enviado!",
+      "resend_failed": "No se pudo reenviar el código",
+      "invalid_email": "Por favor, introduce una dirección de correo electrónico válida",
+      "enter_full_code": "Por favor, introduce el código de verificación completo"
+    }
   },
   "home": {
     "badge": "Creado para comunidades globales",

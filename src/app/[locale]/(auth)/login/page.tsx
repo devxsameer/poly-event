@@ -1,4 +1,5 @@
 import LoginForm from "@/features/auth/components/login-form";
+import { getDictionary } from "@/features/i18n/get-dictionary";
 
 export default async function LoginPage({
   params,
@@ -6,5 +7,7 @@ export default async function LoginPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  return <LoginForm locale={locale} />;
+  const dict = await getDictionary(locale);
+
+  return <LoginForm locale={locale} dict={dict} />;
 }

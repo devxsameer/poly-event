@@ -4,7 +4,8 @@
     "login": "Log in",
     "logout": "Sign out",
     "loading": "Loading",
-    "error": "Something went wrong"
+    "error": "Something went wrong",
+    "back": "Back"
   },
 
   "nav": {
@@ -18,6 +19,41 @@
     "not_found": "The page you're looking for doesn't exist.",
     "unauthorized": "You don't have access to this page.",
     "unexpected": "An unexpected error occurred. Please try again."
+  },
+
+  "auth": {
+    "welcome_back": "Welcome back",
+    "sign_in_to_continue": "Sign in to continue",
+    "check_your_email": "Check your email",
+    "code_sent_to": "Code sent to",
+    "continue_with_github": "Continue with GitHub",
+    "or_continue_with_email": "or continue with email",
+    "email_placeholder": "name@example.com",
+    "continue_with_email": "Continue with Email",
+    "sending_code": "Sending code...",
+    "enter_code": "Enter code",
+    "code_hint": "Enter the 6-8 digit code from your email",
+    "verify_and_sign_in": "Verify & Sign In",
+    "verifying": "Verifying...",
+    "resend_code": "Resend code",
+    "terms_agreement": "By continuing, you agree to our",
+    "terms_of_service": "Terms of Service",
+    "and": "and",
+    "privacy_policy": "Privacy Policy",
+    "toast": {
+      "code_sent": "Code sent!",
+      "check_inbox": "Check your inbox at",
+      "welcome_back": "Welcome back!",
+      "redirecting": "Redirecting you now...",
+      "error": "Something went wrong",
+      "failed_to_send": "Failed to send code",
+      "verification_failed": "Verification failed",
+      "invalid_code": "Invalid or expired code",
+      "new_code_sent": "New code sent!",
+      "resend_failed": "Could not resend code",
+      "invalid_email": "Please enter a valid email address",
+      "enter_full_code": "Please enter the full verification code"
+    }
   },
 
   "home": {

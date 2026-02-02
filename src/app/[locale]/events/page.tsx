@@ -20,9 +20,13 @@ export default async function EventsPage({
   }
 
   return (
-    <div className="container max-w-4xl py-8">
-      <h1 className="text-2xl font-bold mb-6">Events</h1>
-      <EventList events={events} />
-    </div>
+    <main className="min-h-screen bg-background">
+      <div className="container max-w-4xl py-12 px-6">
+        <h1 className="text-3xl font-bold mb-8 bg-clip-text text-transparent bg-linear-to-r from-foreground to-foreground/70">
+          Events
+        </h1>
+        <EventList events={events} />
+      </div>
+    </main>
   );
 }
