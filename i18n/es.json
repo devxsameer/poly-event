@@ -1,4 +1,16 @@
 {
+  "common": {
+    "go_home": "Ir al inicio",
+    "login": "Iniciar sesión",
+    "logout": "Cerrar sesión",
+    "loading": "Cargando",
+    "error": "Algo salió mal"
+  },
+  "errors": {
+    "not_found": "La página que buscas no existe.",
+    "unauthorized": "No tienes acceso a esta página.",
+    "unexpected": "Ocurrió un error inesperado. Por favor, inténtalo de nuevo."
+  },
   "home": {
     "hero_title": "Descubre eventos en tu idioma",
     "hero_description": "PolyEvent elimina las barreras lingüísticas de los eventos globales. Los organizadores escriben una vez. Los asistentes leen, comentan e interactúan en su propio idioma.",
