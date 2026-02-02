@@ -124,6 +124,11 @@ create policy "event translations are public"
 on public.event_translations for select
 using (true);
 
+create policy "system can insert event translations"
+on public.event_translations
+for insert
+with check (true);
+
 -- COMMENTS
 create policy "comments are public"
 on public.comments for select

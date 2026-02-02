@@ -7,6 +7,7 @@ import "@/styles/globals.css";
 import { Navbar } from "@/components/navbar/navbar";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { defaultLocale, locales } from "@/features/i18n/config";
+import { Toaster } from "sonner";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -44,6 +45,7 @@ export default async function LocaleLayout({
     <html lang={locale}>
       <body className={`${outfit.variable} antialiased`}>
         <Navbar user={user} />
+        <Toaster />
         {children}
       </body>
     </html>

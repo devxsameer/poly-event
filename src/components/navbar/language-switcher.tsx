@@ -1,8 +1,8 @@
 "use client";
 
 import * as React from "react";
-import { usePathname, useParams, useRouter } from "next/navigation";
 import { Globe } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 import {
   DropdownMenu,
@@ -14,15 +14,17 @@ import { Button } from "@/components/ui/button";
 import { locales, type Locale } from "@/features/i18n/config";
 import { setPreferredLocale } from "@/features/i18n/locale.actions";
 
-export function LanguageSwitcher() {
-  const pathname = usePathname();
-  const params = useParams<{ locale: string }>();
+interface LanguageSwitcherProps {
+  currentLocale: Locale;
+  pathname: string;
+}
+
+export function LanguageSwitcher({
+  currentLocale,
+  pathname,
+}: LanguageSwitcherProps) {
   const router = useRouter();
-
-  const currentLocale = params.locale as Locale;
   const [pending, startTransition] = React.useTransition();
-
-  if (!pathname || !currentLocale) return null;
 
   function getHref(targetLocale: Locale) {
     const segments = pathname.split("/");
@@ -30,7 +32,7 @@ export function LanguageSwitcher() {
     return segments.join("/");
   }
 
-  async function onSelect(locale: Locale) {
+  function onSelect(locale: Locale) {
     startTransition(async () => {
       await setPreferredLocale(locale);
       router.push(getHref(locale));
