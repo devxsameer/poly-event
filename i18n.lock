@@ -1,6 +1,14 @@
 version: 1
 checksums:
   4188a166aad2705b4f09401f924502ed:
+    common/go_home: 2fca8149d843587f1e77c63c39c57449
+    common/login: f4f219abeb5a465ecb1c7efaf50246de
+    common/logout: 07948fdf20705e04a7bf68ab197512bf
+    common/loading: c6bc8c380e83336c81a92594d3f23000
+    common/error: a3cd2f01c073f1f5ff436d4b132d39cf
+    errors/not_found: bc60a89540a83277acafc260831eb75b
+    errors/unauthorized: bfec21e17f94e2ab40a7854a3c56f6a4
+    errors/unexpected: dd9aef0a9c3638442bc8f6151feb33d6
     home/hero_title: d345f31802e288297733770ab032063b
     home/hero_description: fb1e5fae73303b84453b6e00dab3256f
     home/explore_events: a1d19af2aa89fa516ac21f68d1b1583c

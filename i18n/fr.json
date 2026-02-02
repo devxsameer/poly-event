@@ -1,4 +1,16 @@
 {
+  "common": {
+    "go_home": "Retour à l'accueil",
+    "login": "Connexion",
+    "logout": "Déconnexion",
+    "loading": "Chargement",
+    "error": "Une erreur s'est produite"
+  },
+  "errors": {
+    "not_found": "La page que vous recherchez n'existe pas.",
+    "unauthorized": "Vous n'avez pas accès à cette page.",
+    "unexpected": "Une erreur inattendue s'est produite. Veuillez réessayer."
+  },
   "home": {
     "hero_title": "Découvrez des événements dans votre langue",
     "hero_description": "PolyEvent supprime les barrières linguistiques des événements internationaux. Les organisateurs écrivent une fois. Les participants lisent, commentent et interagissent dans leur propre langue.",
