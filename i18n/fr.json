@@ -1,10 +1,16 @@
 {
   "common": {
     "go_home": "Retour à l'accueil",
-    "login": "Connexion",
-    "logout": "Déconnexion",
+    "login": "Se connecter",
+    "logout": "Se déconnecter",
     "loading": "Chargement",
     "error": "Une erreur s'est produite"
+  },
+  "nav": {
+    "brand_tagline": "Événements multilingues",
+    "events": "Événements",
+    "create": "Créer",
+    "create_event": "Créer un événement"
   },
   "errors": {
     "not_found": "La page que vous recherchez n'existe pas.",
@@ -12,27 +18,29 @@
     "unexpected": "Une erreur inattendue s'est produite. Veuillez réessayer."
   },
   "home": {
+    "badge": "Conçu pour les communautés mondiales",
     "hero_title": "Découvrez des événements dans votre langue",
-    "hero_description": "PolyEvent supprime les barrières linguistiques des événements internationaux. Les organisateurs écrivent une fois. Les participants lisent, commentent et interagissent dans leur propre langue.",
-    "explore_events": "Explorer les événements",
+    "hero_description": "PolyEvent supprime les barrières linguistiques des événements mondiaux. Les organisateurs écrivent une fois. Les participants lisent, commentent et interagissent — dans leur propre langue.",
+    "powered_by": "Propulsé par Lingo.dev · Développé avec Next.js & Supabase",
+    "explore_events": "Parcourir les événements",
     "create_event": "Créer un événement",
     "features": {
       "auto_translation": {
         "title": "Traduction automatique",
-        "description": "Les événements et discussions sont traduits automatiquement grâce à Lingo.dev — aucune localisation manuelle requise."
+        "description": "Les détails des événements et les discussions sont traduits automatiquement grâce à Lingo.dev. Pas de localisation manuelle, pas de contenu dupliqué."
       },
       "multilingual_discussions": {
-        "title": "Discussions multilingues",
-        "description": "Commentez dans votre propre langue. Les autres le lisent dans la leur. Le texte original est toujours préservé."
+        "title": "Discussions en langue maternelle",
+        "description": "Rédigez des commentaires dans votre propre langue. Les autres les lisent dans la leur — tandis que le texte original est toujours préservé."
       },
       "built_for_web": {
-        "title": "Conçu pour le web",
-        "description": "Développé avec Next.js, Supabase et une architecture moderne orientée serveur pour la rapidité et la fiabilité."
+        "title": "Conçu pour le web moderne",
+        "description": "Conçu avec une architecture server-first utilisant Next.js et Supabase pour la rapidité, la fiabilité et l'évolutivité."
       }
     },
     "cta": {
       "title": "Vous organisez un événement international ?",
-      "description": "Ne vous souciez plus de la langue. Concentrez-vous sur l'expérience.",
+      "description": "Laissez les gens participer naturellement — sans que la langue ne soit un obstacle.",
       "button": "Créer votre événement"
     }
   }

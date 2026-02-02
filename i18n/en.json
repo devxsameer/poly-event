@@ -1,10 +1,17 @@
 {
   "common": {
     "go_home": "Go home",
-    "login": "Login",
-    "logout": "Logout",
+    "login": "Log in",
+    "logout": "Sign out",
     "loading": "Loading",
     "error": "Something went wrong"
+  },
+
+  "nav": {
+    "brand_tagline": "Multilingual events",
+    "events": "Events",
+    "create": "Create",
+    "create_event": "Create event"
   },
 
   "errors": {
@@ -14,30 +21,32 @@
   },
 
   "home": {
+    "badge": "Built for global communities",
     "hero_title": "Discover events in your language",
-    "hero_description": "PolyEvent removes language barriers from global events. Organizers write once. Attendees read, comment, and engage in their own language.",
-    "explore_events": "Explore Events",
-    "create_event": "Create an Event",
+    "hero_description": "PolyEvent removes language barriers from global events. Organizers write once. Attendees read, comment, and engage — in their own language.",
+    "powered_by": "Powered by Lingo.dev · Built with Next.js & Supabase",
+    "explore_events": "Browse events",
+    "create_event": "Create an event",
 
     "features": {
       "auto_translation": {
-        "title": "Automatic Translation",
-        "description": "Events and discussions are translated automatically using Lingo.dev — no manual localization required."
+        "title": "Automatic translation",
+        "description": "Event details and discussions are translated automatically using Lingo.dev. No manual localization, no duplicated content."
       },
       "multilingual_discussions": {
-        "title": "Multilingual Discussions",
-        "description": "Comment in your own language. Others read it in theirs. Original text is always preserved."
+        "title": "Native-language discussions",
+        "description": "Write comments in your own language. Others read them in theirs — while the original text is always preserved."
       },
       "built_for_web": {
-        "title": "Built for the Web",
-        "description": "Built with Next.js, Supabase, and modern server-first architecture for speed and reliability."
+        "title": "Built for modern web",
+        "description": "Designed with a server-first architecture using Next.js and Supabase for speed, reliability, and scalability."
       }
     },
 
     "cta": {
       "title": "Hosting an international event?",
-      "description": "Stop worrying about language. Focus on the experience.",
-      "button": "Create Your Event"
+      "description": "Let people participate naturally — without language getting in the way.",
+      "button": "Create your event"
     }
   }
 }

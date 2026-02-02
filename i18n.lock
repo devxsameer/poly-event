@@ -2,23 +2,29 @@ version: 1
 checksums:
   4188a166aad2705b4f09401f924502ed:
     common/go_home: 2fca8149d843587f1e77c63c39c57449
-    common/login: f4f219abeb5a465ecb1c7efaf50246de
-    common/logout: 07948fdf20705e04a7bf68ab197512bf
+    common/login: 9fb886eff8d1d67d8bb79f5c3f78edde
+    common/logout: 6d842546a84e919c519bf8cbffdf25a0
     common/loading: c6bc8c380e83336c81a92594d3f23000
     common/error: a3cd2f01c073f1f5ff436d4b132d39cf
+    nav/brand_tagline: 271039c866bde80d40e2539b3d6a9d00
+    nav/events: d17179a947e9687dd2338ca524b26b63
+    nav/create: 757ccd28dd533ff3a933355273c1e32a
+    nav/create_event: 5ff2a762a1a5662ac056947b06a068c4
     errors/not_found: bc60a89540a83277acafc260831eb75b
     errors/unauthorized: bfec21e17f94e2ab40a7854a3c56f6a4
     errors/unexpected: dd9aef0a9c3638442bc8f6151feb33d6
+    home/badge: e5f98a384ebfd5c6d8241aaa9f82286a
     home/hero_title: d345f31802e288297733770ab032063b
-    home/hero_description: fb1e5fae73303b84453b6e00dab3256f
-    home/explore_events: a1d19af2aa89fa516ac21f68d1b1583c
-    home/create_event: 2d43c5fa8be8c20b9b71b26bb834f42c
-    home/features/auto_translation/title: 93c6f0da0aa33697a795d45cee0394a8
-    home/features/auto_translation/description: 603468f58c1039d883e696f5535ed3ae
-    home/features/multilingual_discussions/title: 248438deea6d2ba540c6779e0e565844
-    home/features/multilingual_discussions/description: d2f8ba8958bcde3646a4d2eb0118131f
-    home/features/built_for_web/title: eda59866f440e2ee6e0ba24c0fd36155
-    home/features/built_for_web/description: f0722acf2188ff807c931aa58e084ff4
+    home/hero_description: 44bef0799603fad2d17220ea36f0e2a0
+    home/powered_by: 4ca38699474758e039056dc1e27554db
+    home/explore_events: 7ff8c4b421c19115b75792d345a215b9
+    home/create_event: 225164058882146c2c770d6bcddf0275
+    home/features/auto_translation/title: 9aad369002b09796a51ee575ffbcc929
+    home/features/auto_translation/description: 63838c37cce523aee7852283f5870a12
+    home/features/multilingual_discussions/title: c322b4c4659ab6e4f609e8e211114ba0
+    home/features/multilingual_discussions/description: e53eaa87b9e9d891307ec0d4194e4171
+    home/features/built_for_web/title: a110aa86ac102cce96fe8784eb813c51
+    home/features/built_for_web/description: 9f4e66c3174b9009251b6c7536a0d960
     home/cta/title: 6a8b2787ea04985065760c12377db141
-    home/cta/description: b25c1287e14395482cad428373b7beba
-    home/cta/button: 14720774785385bf528b33a6d5273166
+    home/cta/description: bd3a5e6efae43430426bb0715ff94860
+    home/cta/button: e3f3d458368a9fb9f7016a714d0e4717

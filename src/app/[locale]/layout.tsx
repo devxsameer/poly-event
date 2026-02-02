@@ -8,6 +8,7 @@ import { Navbar } from "@/components/navbar/navbar";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { defaultLocale, locales } from "@/features/i18n/config";
 import { Toaster } from "sonner";
+import { getDictionary } from "@/features/i18n/get-dictionary";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -35,6 +36,7 @@ export default async function LocaleLayout({
   if (!locales.includes(locale as (typeof locales)[number])) {
     redirect(`/${defaultLocale}/not-found`);
   }
+  const dict = await getDictionary(locale);
 
   const supabase = await createServerSupabaseClient();
   const {
@@ -44,7 +46,7 @@ export default async function LocaleLayout({
   return (
     <html lang={locale}>
       <body className={`${outfit.variable} antialiased`}>
-        <Navbar user={user} />
+        <Navbar user={user} dict={dict} />
         <Toaster />
         {children}
       </body>
