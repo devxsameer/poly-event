@@ -1,36 +1,165 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# PolyEvent
 
-## Getting Started
+**Multilingual Event Platform** — Host global events where language is never a barrier. Built for the [Lingo.dev](https://lingo.dev) hackathon.
 
-First, run the development server:
+![PolyEvent](https://img.shields.io/badge/Built_with-Lingo.dev-purple?style=flat-square)
+![Next.js](https://img.shields.io/badge/Next.js-16-black?style=flat-square)
+![Supabase](https://img.shields.io/badge/Supabase-Database-green?style=flat-square)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## ✨ Features
+
+- **🌍 Automatic Translation** — Event details and comments are translated automatically using [Lingo.dev](https://lingo.dev) AI. No manual localization required.
+- **💬 Native-Language Discussions** — Write comments in your own language. Others read them in theirs — while the original text is always preserved.
+- **🚀 Server-First Architecture** — Built with Next.js 16 and Supabase for speed, reliability, and scalability.
+- **🌐 Multi-Locale Support** — Supports English, Spanish, French, and Hindi out of the box (easily extensible).
+- **🔐 Secure Authentication** — GitHub OAuth and magic link email authentication via Supabase.
+
+## 🛠️ Tech Stack
+
+| Layer        | Technology                                  |
+| ------------ | ------------------------------------------- |
+| Frontend     | Next.js 16, React 19, TypeScript            |
+| Styling      | Tailwind CSS v4, shadcn/ui                  |
+| Backend      | Supabase (PostgreSQL, Auth, Edge Functions) |
+| Localization | [Lingo.dev](https://lingo.dev) SDK + CLI    |
+| Deployment   | Vercel                                      |
+
+## 📁 Project Structure
+
+```
+src/
+├── app/                    # Next.js App Router pages
+│   ├── [locale]/          # Locale-prefixed routes
+│   │   ├── events/        # Event listing & detail pages
+│   │   ├── (protected)/   # Auth-protected routes
+│   │   └── (auth)/        # Authentication pages
+├── components/            # React components
+│   ├── ui/               # shadcn/ui primitives
+│   ├── navbar/           # Navigation components
+│   ├── events/           # Event-related components
+│   └── comments/         # Comment components
+├── features/             # Business logic modules
+│   ├── events/           # Event CRUD, queries, translation
+│   ├── comments/         # Comment CRUD, queries, translation
+│   ├── auth/             # Authentication actions
+│   ├── i18n/             # Locale config & dictionary loading
+│   └── translation/      # Translation guard utilities
+├── lib/
+│   ├── lingo/            # Lingo.dev SDK configuration
+│   └── supabase/         # Supabase client setup
+└── i18n/                 # Locale JSON files (en, es, fr, hi)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Getting Started
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Prerequisites
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Node.js 18+
+- pnpm (or npm/yarn)
+- Supabase account
+- Lingo.dev API key
 
-## Learn More
+### Installation
 
-To learn more about Next.js, take a look at the following resources:
+1. **Clone the repository**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   ```bash
+   git clone https://github.com/yourusername/poly-event.git
+   cd poly-event
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2. **Install dependencies**
 
-## Deploy on Vercel
+   ```bash
+   pnpm install
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. **Set up environment variables**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+   ```bash
+   cp .env.local.example .env.local
+   ```
+
+   Fill in:
+
+   ```env
+   NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+   LINGODOTDEV_API_KEY=your_lingo_api_key
+   ```
+
+4. **Run the development server**
+
+   ```bash
+   pnpm dev
+   ```
+
+5. **Open [http://localhost:3000](http://localhost:3000)**
+
+### Updating Translations
+
+To update translations after modifying `i18n/en.json`:
+
+```bash
+npx lingo.dev run
+```
+
+This will automatically translate new/changed keys to all target locales (es, fr, hi).
+
+## 🌐 Localization with Lingo.dev
+
+This project uses Lingo.dev in two ways:
+
+### 1. Static UI Translations (CLI)
+
+The `i18n/` folder contains static translations for the UI:
+
+- `en.json` — Source locale (English)
+- `es.json` — Spanish (auto-generated)
+- `fr.json` — French (auto-generated)
+- `hi.json` — Hindi (auto-generated)
+
+Configure in `i18n.json`:
+
+```json
+{
+  "version": "1.11",
+  "locale": {
+    "source": "en",
+    "targets": ["es", "fr", "hi"]
+  },
+  "buckets": {
+    "json": {
+      "include": ["i18n/[locale].json"]
+    }
+  }
+}
+```
+
+### 2. Dynamic Content Translation (SDK)
+
+User-generated content (events, comments) is translated on-demand using the Lingo.dev SDK:
+
+```typescript
+import { localizeText, localizeObject } from "@/lib/lingo";
+
+// Translate a single comment
+const translated = await localizeText(comment.content, {
+  sourceLocale: "en",
+  targetLocale: "es",
+});
+
+// Translate event title + description
+const translated = await localizeObject(
+  { title: event.title, description: event.description },
+  { sourceLocale: "en", targetLocale: "es" },
+);
+```
+
+## 📝 License
+
+MIT License — feel free to use this project as a starting point for your own multilingual apps!
+
+---
+
+Built with ❤️ for the [Lingo.dev Hackathon](https://lingo.dev)

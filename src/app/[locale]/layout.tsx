@@ -6,9 +6,9 @@ import "@/styles/globals.css";
 
 import { Navbar } from "@/components/navbar/navbar";
 import { TopLoader } from "@/components/ui/top-loader";
-import { AuthSuccessToast } from "@/features/auth/components/auth-success-toast";
+import { AuthSuccessToast } from "@/components/auth/auth-success-toast";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
-import { defaultLocale, locales } from "@/features/i18n/config";
+import { defaultLocale, locales, rtlLocales } from "@/features/i18n/config";
 import { Toaster } from "sonner";
 import { getDictionary } from "@/features/i18n/get-dictionary";
 import { Suspense } from "react";
@@ -44,7 +44,6 @@ export default async function LocaleLayout({
 }) {
   const { locale } = await params;
 
-  const isRTL = locale === "ar" || locale === "he";
   const fontStrategy = locale === "hi" ? "font-hindi" : "font-sans";
 
   if (!locales.includes(locale as (typeof locales)[number])) {
@@ -60,7 +59,11 @@ export default async function LocaleLayout({
   return (
     <html
       lang={locale}
-      dir={isRTL ? "rtl" : "ltr"}
+      dir={
+        rtlLocales.includes(locale as (typeof rtlLocales)[number])
+          ? "rtl"
+          : "ltr"
+      }
       className="dark"
       suppressHydrationWarning
     >

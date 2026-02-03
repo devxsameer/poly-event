@@ -1,0 +1,147 @@
+{
+  "common": {
+    "go_home": "Zur Startseite",
+    "login": "Anmelden",
+    "logging_out": "Wird abgemeldet...",
+    "logout": "Abmelden",
+    "loading": "Wird geladen",
+    "error": "Etwas ist schiefgelaufen",
+    "back": "Zurück",
+    "language": "Sprache",
+    "anonymous": "Anonym",
+    "events_count": "{count} Veranstaltungen",
+    "event_count_singular": "1 Veranstaltung",
+    "available": "verfügbar"
+  },
+  "nav": {
+    "brand_tagline": "Mehrsprachige Veranstaltungen",
+    "events": "Veranstaltungen",
+    "create": "Erstellen",
+    "create_event": "Veranstaltung erstellen",
+    "open_menu": "Menü öffnen",
+    "close_menu": "Menü schließen"
+  },
+  "errors": {
+    "not_found": "Die gesuchte Seite existiert nicht.",
+    "unauthorized": "Sie haben keinen Zugriff auf diese Seite.",
+    "unexpected": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es erneut."
+  },
+  "auth": {
+    "welcome_back": "Willkommen zurück",
+    "sign_in_to_continue": "Melden Sie sich an, um fortzufahren",
+    "check_your_email": "Überprüfen Sie Ihre E-Mails",
+    "code_sent_to": "Code gesendet an",
+    "continue_with_github": "Mit GitHub fortfahren",
+    "or_continue_with_email": "oder mit E-Mail fortfahren",
+    "email_placeholder": "name@beispiel.de",
+    "continue_with_email": "Mit E-Mail fortfahren",
+    "sending_code": "Code wird gesendet...",
+    "enter_code": "Code eingeben",
+    "code_hint": "Geben Sie den 6-8-stelligen Code aus Ihrer E-Mail ein",
+    "verify_and_sign_in": "Verifizieren & anmelden",
+    "verifying": "Wird verifiziert...",
+    "resend_code": "Code erneut senden",
+    "terms_agreement": "Indem Sie fortfahren, stimmen Sie unseren",
+    "terms_of_service": "Nutzungsbedingungen",
+    "and": "und",
+    "privacy_policy": "Datenschutzrichtlinie",
+    "toast": {
+      "code_sent": "Code gesendet!",
+      "check_inbox": "Überprüfen Sie Ihr Postfach unter",
+      "welcome_back": "Willkommen zurück!",
+      "redirecting": "Sie werden jetzt weitergeleitet...",
+      "error": "Etwas ist schiefgelaufen",
+      "failed_to_send": "Code konnte nicht gesendet werden",
+      "verification_failed": "Verifizierung fehlgeschlagen",
+      "invalid_code": "Ungültiger oder abgelaufener Code",
+      "new_code_sent": "Neuer Code gesendet!",
+      "resend_failed": "Code konnte nicht erneut gesendet werden",
+      "invalid_email": "Bitte geben Sie eine gültige E-Mail-Adresse ein",
+      "enter_full_code": "Bitte geben Sie den vollständigen Verifizierungscode ein"
+    }
+  },
+  "events": {
+    "title": "Events entdecken",
+    "subtitle": "Durchsuchen Sie bevorstehende Events aus der ganzen Welt, automatisch in Ihre Sprache übersetzt.",
+    "why_polyevent": "Warum PolyEvent?",
+    "built_for_global": "Entwickelt für globale Teams und Communities",
+    "empty": {
+      "title": "Noch keine Events",
+      "description": "Schauen Sie später wieder vorbei für bevorstehende Events oder erstellen Sie selbst eines!"
+    },
+    "card": {
+      "original_language": "Original",
+      "translating": "Wird übersetzt...",
+      "view_event": "Event ansehen"
+    },
+    "detail": {
+      "original_language": "Originalsprache",
+      "translation_pending": "Die Übersetzung wird gerade erstellt. Originalinhalt wird angezeigt…",
+      "location": "Ort",
+      "date_time": "Datum & Uhrzeit",
+      "comments": "Kommentare",
+      "no_comments": "Noch keine Kommentare. Seien Sie der Erste, der seine Gedanken teilt!",
+      "back_to_events": "Zurück zu Events"
+    },
+    "create": {
+      "title": "Event erstellen",
+      "subtitle": "Teilen Sie ein Event in Ihrer gewählten Sprache. Wir übersetzen es automatisch für ein globales Publikum.",
+      "language_label": "Event-Sprache",
+      "language_hint": "Dies ist die Sprache, in der Sie das Event verfassen werden.",
+      "title_label": "Titel",
+      "title_placeholder": "Geben Sie Ihrem Event einen einprägsamen Titel",
+      "description_label": "Beschreibung",
+      "description_placeholder": "Erzählen Sie den Leuten, worum es bei Ihrem Event geht...",
+      "start_time_label": "Startzeit",
+      "end_time_label": "Endzeit",
+      "location_label": "Ort",
+      "location_placeholder": "Wo findet diese Veranstaltung statt? (optional)",
+      "submit": "Veranstaltung erstellen",
+      "submitting": "Wird erstellt...",
+      "toast": {
+        "success": "Veranstaltung erstellt!",
+        "success_description": "Übersetzungen werden automatisch angezeigt, sobald sie fertig sind."
+      }
+    }
+  },
+  "comments": {
+    "placeholder": "Teile deine Gedanken...",
+    "submit": "Kommentar posten",
+    "submitting": "Wird gepostet...",
+    "translation_pending": "Übersetzung ausstehend oder nicht verfügbar",
+    "retry_translation": "Übersetzung erneut versuchen",
+    "toast": {
+      "success": "Kommentar hinzugefügt",
+      "success_description": "Übersetzungen werden automatisch angezeigt."
+    },
+    "view_original": "Original anzeigen",
+    "view_translated": "Übersetzung anzeigen"
+  },
+  "home": {
+    "badge": "Entwickelt für globale Communities",
+    "hero_title": "Entdecke Veranstaltungen in deiner Sprache",
+    "hero_description": "PolyEvent beseitigt Sprachbarrieren bei globalen Veranstaltungen. Organisatoren schreiben einmal. Teilnehmer lesen, kommentieren und engagieren sich – in ihrer eigenen Sprache.",
+    "powered_by": "Powered by Lingo.dev · Built with Next.js & Supabase",
+    "explore_events": "Veranstaltungen durchsuchen",
+    "create_event": "Veranstaltung erstellen",
+    "features": {
+      "auto_translation": {
+        "title": "Automatische Übersetzung",
+        "description": "Veranstaltungsdetails und Diskussionen werden automatisch mit Lingo.dev übersetzt. Keine manuelle Lokalisierung, keine duplizierten Inhalte."
+      },
+      "multilingual_discussions": {
+        "title": "Diskussionen in der Muttersprache",
+        "description": "Schreiben Sie Kommentare in Ihrer eigenen Sprache. Andere lesen sie in ihrer – während der Originaltext immer erhalten bleibt."
+      },
+      "built_for_web": {
+        "title": "Für das moderne Web entwickelt",
+        "description": "Entwickelt mit einer Server-First-Architektur unter Verwendung von Next.js und Supabase für Geschwindigkeit, Zuverlässigkeit und Skalierbarkeit."
+      }
+    },
+    "cta": {
+      "title": "Veranstalten Sie ein internationales Event?",
+      "description": "Lassen Sie Menschen natürlich teilnehmen – ohne dass die Sprache im Weg steht.",
+      "button": "Event erstellen"
+    }
+  }
+}

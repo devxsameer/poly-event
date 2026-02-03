@@ -73,9 +73,7 @@ export async function getEventById(eventId: string, locale: string) {
     .eq("id", eventId)
     .single();
 
-  if (error || !data) {
-    throw new Error("Event not found");
-  }
+  if (error || !data) throw new Error("Event not found");
 
   const translation = data.event_translations?.find((t) => t.locale === locale);
 
@@ -85,8 +83,12 @@ export async function getEventById(eventId: string, locale: string) {
     start_time: data.start_time,
     end_time: data.end_time,
     location: data.location,
+
     title: translation?.translated_title ?? data.title,
     description: translation?.translated_description ?? data.description,
+    originalTitle: data.title,
+    originalDescription: data.description,
+
     hasTranslation: Boolean(translation),
   };
 }

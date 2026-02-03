@@ -11,6 +11,7 @@ import { LocalizedLink } from "../localized-link";
 import { LanguageSwitcher } from "./language-switcher";
 import { type Locale } from "@/features/i18n/config";
 import { Dictionary } from "@/features/i18n/dictionary.types";
+import { triggerTopLoader } from "../ui/top-loader";
 
 interface NavbarProps {
   user: User | null;
@@ -18,6 +19,7 @@ interface NavbarProps {
 }
 
 export function Navbar({ user, dict }: NavbarProps) {
+  const [loggingOut, setLoggingOut] = React.useState(false);
   const [open, setOpen] = React.useState(false);
   const pathname = usePathname();
   const params = useParams<{ locale: string }>();
@@ -31,16 +33,22 @@ export function Navbar({ user, dict }: NavbarProps) {
   const locale = params.locale as Locale;
 
   async function handleSignOut() {
+    if (loggingOut) return;
+
+    triggerTopLoader();
+    setLoggingOut(true);
+    setOpen(false);
+
     try {
       await signOut();
-    } finally {
-      setOpen(false);
+    } catch {
+      setLoggingOut(false);
     }
   }
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background md:bg-background/95 backdrop-blur-xl md:supports-backdrop-filter:bg-background/60">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Brand */}
         <LocalizedLink
           href="/"
@@ -62,7 +70,7 @@ export function Navbar({ user, dict }: NavbarProps) {
           </LocalizedLink>
           {user && (
             <LocalizedLink
-              href="/dashboard/events/new"
+              href="/events/new"
               className="px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground rounded-md hover:bg-accent"
             >
               {dict.nav.create}
@@ -72,16 +80,28 @@ export function Navbar({ user, dict }: NavbarProps) {
 
         {/* Desktop Right Actions */}
         <div className="hidden md:flex items-center gap-3">
-          <LanguageSwitcher currentLocale={locale} pathname={pathname} />
+          <LanguageSwitcher
+            currentLocale={locale}
+            pathname={pathname}
+            id="desktop"
+          />
 
           {user ? (
             <Button
               onClick={handleSignOut}
               variant="ghost"
               size="sm"
-              className="text-muted-foreground hover:text-foreground"
+              disabled={loggingOut}
+              className="cursor-pointer text-muted-foreground hover:text-foreground gap-2"
             >
-              {dict.common.logout}
+              {loggingOut ? (
+                <>
+                  <span className="animate-spin h-4 w-4 rounded-full border-2 border-muted-foreground border-t-transparent" />
+                  {dict.common.logging_out}
+                </>
+              ) : (
+                dict.common.logout
+              )}
             </Button>
           ) : (
             <LocalizedLink href="/login">
@@ -95,7 +115,7 @@ export function Navbar({ user, dict }: NavbarProps) {
         {/* Mobile Menu Toggle */}
         <button
           type="button"
-          className="md:hidden flex h-10 w-10 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+          className="md:hidden cursor-pointer flex h-10 w-10 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
           onClick={() => setOpen((v) => !v)}
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
@@ -134,7 +154,7 @@ export function Navbar({ user, dict }: NavbarProps) {
 
             {user && (
               <LocalizedLink
-                href="/dashboard/events/new"
+                href="/events/new"
                 onClick={() => setOpen(false)}
                 className="flex items-center justify-between rounded-lg px-4 py-3 text-base font-medium text-foreground transition-colors hover:bg-accent"
               >
@@ -148,8 +168,14 @@ export function Navbar({ user, dict }: NavbarProps) {
 
           <div className="space-y-3 px-4">
             <div className="flex items-center justify-between">
-              <span className="text-sm text-muted-foreground">Language</span>
-              <LanguageSwitcher currentLocale={locale} pathname={pathname} />
+              <span className="text-sm text-muted-foreground">
+                {dict.common.language}
+              </span>
+              <LanguageSwitcher
+                currentLocale={locale}
+                pathname={pathname}
+                id="mobile"
+              />
             </div>
           </div>
 
@@ -160,13 +186,21 @@ export function Navbar({ user, dict }: NavbarProps) {
               <Button
                 onClick={handleSignOut}
                 variant="outline"
-                className="w-full justify-center"
+                disabled={loggingOut}
+                className="cursor-pointer w-full justify-center gap-2"
               >
-                {dict.common.logout}
+                {loggingOut ? (
+                  <>
+                    <span className="animate-spin h-4 w-4 rounded-full border-2 border-muted-foreground border-t-transparent" />
+                    {dict.common.logging_out}
+                  </>
+                ) : (
+                  dict.common.logout
+                )}
               </Button>
             ) : (
               <LocalizedLink href="/login" onClick={() => setOpen(false)}>
-                <Button className="w-full justify-center">
+                <Button className="cursor-pointer w-full justify-center">
                   {dict.common.login}
                 </Button>
               </LocalizedLink>

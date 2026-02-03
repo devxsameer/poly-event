@@ -1,29 +1,30 @@
 "use server";
 
 import { createServerSupabaseClient } from "@/lib/supabase/server";
-import { LingoDotDevEngine } from "lingo.dev/sdk";
-
-const lingo = new LingoDotDevEngine({
-  apiKey: process.env.LINGODOTDEV_API_KEY!,
-});
+import { localizeText } from "@/lib/lingo";
+import {
+  canTranslate,
+  markTranslationFailure,
+  markTranslationSuccess,
+} from "../translation/translation.guard";
 
 export async function requestCommentTranslation(
   commentId: string,
   sourceLocale: string,
   targetLocale: string,
 ) {
-  if (!targetLocale || sourceLocale === targetLocale) return;
+  if (sourceLocale === targetLocale) return;
 
   const supabase = await createServerSupabaseClient();
 
-  const { data: existing } = await supabase
+  const { data: exists } = await supabase
     .from("comment_translations")
     .select("id")
     .eq("comment_id", commentId)
     .eq("locale", targetLocale)
     .maybeSingle();
 
-  if (existing) return;
+  if (exists) return;
 
   const { data: comment } = await supabase
     .from("comments")
@@ -33,8 +34,13 @@ export async function requestCommentTranslation(
 
   if (!comment) return;
 
+  const key = `comment:${commentId}:${targetLocale}`;
+
+  const guard = canTranslate(key, comment.content);
+  if (!guard.allowed) return;
+
   try {
-    const translated = await lingo.localizeText(comment.content, {
+    const translated = await localizeText(comment.content, {
       sourceLocale,
       targetLocale,
     });
@@ -44,11 +50,9 @@ export async function requestCommentTranslation(
       locale: targetLocale,
       translated_content: translated,
     });
-  } catch (err) {
-    console.error("[comment-translation-failed]", {
-      commentId,
-      targetLocale,
-      err,
-    });
+
+    markTranslationSuccess(key);
+  } catch {
+    markTranslationFailure(key);
   }
 }

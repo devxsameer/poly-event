@@ -1,0 +1,147 @@
+{
+  "common": {
+    "go_home": "Kembali ke beranda",
+    "login": "Masuk",
+    "logging_out": "Keluar...",
+    "logout": "Keluar",
+    "loading": "Memuat",
+    "error": "Terjadi kesalahan",
+    "back": "Kembali",
+    "language": "Bahasa",
+    "anonymous": "Anonim",
+    "events_count": "{count} acara",
+    "event_count_singular": "1 acara",
+    "available": "tersedia"
+  },
+  "nav": {
+    "brand_tagline": "Acara multibahasa",
+    "events": "Acara",
+    "create": "Buat",
+    "create_event": "Buat acara",
+    "open_menu": "Buka menu",
+    "close_menu": "Tutup menu"
+  },
+  "errors": {
+    "not_found": "Halaman yang Anda cari tidak ditemukan.",
+    "unauthorized": "Anda tidak memiliki akses ke halaman ini.",
+    "unexpected": "Terjadi kesalahan yang tidak terduga. Silakan coba lagi."
+  },
+  "auth": {
+    "welcome_back": "Selamat datang kembali",
+    "sign_in_to_continue": "Masuk untuk melanjutkan",
+    "check_your_email": "Periksa email Anda",
+    "code_sent_to": "Kode dikirim ke",
+    "continue_with_github": "Lanjutkan dengan GitHub",
+    "or_continue_with_email": "atau lanjutkan dengan email",
+    "email_placeholder": "nama@contoh.com",
+    "continue_with_email": "Lanjutkan dengan email",
+    "sending_code": "Mengirim kode...",
+    "enter_code": "Masukkan kode",
+    "code_hint": "Masukkan kode 6-8 digit dari email Anda",
+    "verify_and_sign_in": "Verifikasi & masuk",
+    "verifying": "Memverifikasi...",
+    "resend_code": "Kirim ulang kode",
+    "terms_agreement": "Dengan melanjutkan, Anda menyetujui",
+    "terms_of_service": "Ketentuan layanan",
+    "and": "dan",
+    "privacy_policy": "Kebijakan privasi",
+    "toast": {
+      "code_sent": "Kode terkirim!",
+      "check_inbox": "Periksa kotak masuk Anda di",
+      "welcome_back": "Selamat datang kembali!",
+      "redirecting": "Mengalihkan Anda sekarang...",
+      "error": "Terjadi kesalahan",
+      "failed_to_send": "Gagal mengirim kode",
+      "verification_failed": "Verifikasi gagal",
+      "invalid_code": "Kode tidak valid atau kedaluwarsa",
+      "new_code_sent": "Kode baru terkirim!",
+      "resend_failed": "Tidak dapat mengirim ulang kode",
+      "invalid_email": "Silakan masukkan alamat email yang valid",
+      "enter_full_code": "Silakan masukkan kode verifikasi lengkap"
+    }
+  },
+  "events": {
+    "title": "Temukan acara",
+    "subtitle": "Jelajahi acara mendatang dari seluruh dunia, diterjemahkan secara otomatis ke bahasa Anda.",
+    "why_polyevent": "Mengapa PolyEvent?",
+    "built_for_global": "Dibuat untuk tim dan komunitas global",
+    "empty": {
+      "title": "Belum ada acara",
+      "description": "Periksa kembali nanti untuk acara mendatang, atau buat sendiri!"
+    },
+    "card": {
+      "original_language": "Asli",
+      "translating": "Menerjemahkan...",
+      "view_event": "Lihat acara"
+    },
+    "detail": {
+      "original_language": "Bahasa asli",
+      "translation_pending": "Terjemahan sedang dibuat. Menampilkan konten asli…",
+      "location": "Lokasi",
+      "date_time": "Tanggal & waktu",
+      "comments": "Komentar",
+      "no_comments": "Belum ada komentar. Jadilah yang pertama berbagi pemikiran Anda!",
+      "back_to_events": "Kembali ke acara"
+    },
+    "create": {
+      "title": "Buat acara",
+      "subtitle": "Bagikan acara dalam bahasa pilihan Anda. Kami akan menerjemahkannya secara otomatis untuk audiens global.",
+      "language_label": "Bahasa acara",
+      "language_hint": "Ini adalah bahasa yang akan Anda gunakan untuk menulis acara.",
+      "title_label": "Judul",
+      "title_placeholder": "Berikan judul yang menarik untuk acara Anda",
+      "description_label": "Deskripsi",
+      "description_placeholder": "Ceritakan kepada orang-orang tentang acara Anda...",
+      "start_time_label": "Waktu mulai",
+      "end_time_label": "Waktu selesai",
+      "location_label": "Lokasi",
+      "location_placeholder": "Di mana acara ini berlangsung? (opsional)",
+      "submit": "Buat acara",
+      "submitting": "Membuat...",
+      "toast": {
+        "success": "Acara berhasil dibuat!",
+        "success_description": "Terjemahan akan muncul secara otomatis setelah selesai."
+      }
+    }
+  },
+  "comments": {
+    "placeholder": "Bagikan pemikiran Anda...",
+    "submit": "Kirim komentar",
+    "submitting": "Mengirim...",
+    "translation_pending": "Terjemahan tertunda atau tidak tersedia",
+    "retry_translation": "Coba terjemahkan lagi",
+    "toast": {
+      "success": "Komentar ditambahkan",
+      "success_description": "Terjemahan akan muncul secara otomatis."
+    },
+    "view_original": "Lihat asli",
+    "view_translated": "Lihat terjemahan"
+  },
+  "home": {
+    "badge": "Dibuat untuk komunitas global",
+    "hero_title": "Temukan acara dalam bahasa Anda",
+    "hero_description": "PolyEvent menghilangkan hambatan bahasa dari acara global. Penyelenggara menulis sekali. Peserta membaca, berkomentar, dan berinteraksi — dalam bahasa mereka sendiri.",
+    "powered_by": "Didukung oleh Lingo.dev · Dibuat dengan Next.js & Supabase",
+    "explore_events": "Jelajahi acara",
+    "create_event": "Buat acara",
+    "features": {
+      "auto_translation": {
+        "title": "Terjemahan otomatis",
+        "description": "Detail acara dan diskusi diterjemahkan secara otomatis menggunakan Lingo.dev. Tanpa lokalisasi manual, tanpa konten duplikat."
+      },
+      "multilingual_discussions": {
+        "title": "Diskusi dalam bahasa asli",
+        "description": "Tulis komentar dalam bahasa Anda sendiri. Orang lain membacanya dalam bahasa mereka — sementara teks asli selalu terjaga."
+      },
+      "built_for_web": {
+        "title": "Dibangun untuk web modern",
+        "description": "Dirancang dengan arsitektur server-first menggunakan Next.js dan Supabase untuk kecepatan, keandalan, dan skalabilitas."
+      }
+    },
+    "cta": {
+      "title": "Mengadakan acara internasional?",
+      "description": "Biarkan orang berpartisipasi secara natural — tanpa hambatan bahasa.",
+      "button": "Buat acara Anda"
+    }
+  }
+}

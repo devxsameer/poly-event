@@ -1,0 +1,147 @@
+{
+  "common": {
+    "go_home": "العودة للرئيسية",
+    "login": "تسجيل الدخول",
+    "logging_out": "جارٍ تسجيل الخروج...",
+    "logout": "تسجيل الخروج",
+    "loading": "جارٍ التحميل",
+    "error": "حدث خطأ ما",
+    "back": "رجوع",
+    "language": "اللغة",
+    "anonymous": "مجهول",
+    "events_count": "{count} فعالية",
+    "event_count_singular": "فعالية واحدة",
+    "available": "متاح"
+  },
+  "nav": {
+    "brand_tagline": "فعاليات متعددة اللغات",
+    "events": "الفعاليات",
+    "create": "إنشاء",
+    "create_event": "إنشاء فعالية",
+    "open_menu": "فتح القائمة",
+    "close_menu": "إغلاق القائمة"
+  },
+  "errors": {
+    "not_found": "الصفحة التي تبحث عنها غير موجودة.",
+    "unauthorized": "ليس لديك صلاحية الوصول إلى هذه الصفحة.",
+    "unexpected": "حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى."
+  },
+  "auth": {
+    "welcome_back": "مرحبًا بعودتك",
+    "sign_in_to_continue": "سجّل الدخول للمتابعة",
+    "check_your_email": "تحقق من بريدك الإلكتروني",
+    "code_sent_to": "تم إرسال الرمز إلى",
+    "continue_with_github": "المتابعة باستخدام GitHub",
+    "or_continue_with_email": "أو المتابعة باستخدام البريد الإلكتروني",
+    "email_placeholder": "name@example.com",
+    "continue_with_email": "المتابعة باستخدام البريد الإلكتروني",
+    "sending_code": "جارٍ إرسال الرمز...",
+    "enter_code": "أدخل الرمز",
+    "code_hint": "أدخل الرمز المكون من 6-8 أرقام من بريدك الإلكتروني",
+    "verify_and_sign_in": "التحقق وتسجيل الدخول",
+    "verifying": "جارٍ التحقق...",
+    "resend_code": "إعادة إرسال الرمز",
+    "terms_agreement": "بالمتابعة، فإنك توافق على",
+    "terms_of_service": "شروط الخدمة",
+    "and": "و",
+    "privacy_policy": "سياسة الخصوصية",
+    "toast": {
+      "code_sent": "تم إرسال الرمز!",
+      "check_inbox": "تحقق من صندوق الوارد الخاص بك على",
+      "welcome_back": "مرحبًا بعودتك!",
+      "redirecting": "جارٍ إعادة التوجيه الآن...",
+      "error": "حدث خطأ ما",
+      "failed_to_send": "فشل إرسال الرمز",
+      "verification_failed": "فشل التحقق",
+      "invalid_code": "رمز غير صالح أو منتهي الصلاحية",
+      "new_code_sent": "تم إرسال رمز جديد!",
+      "resend_failed": "تعذرت إعادة إرسال الرمز",
+      "invalid_email": "يرجى إدخال عنوان بريد إلكتروني صالح",
+      "enter_full_code": "يرجى إدخال رمز التحقق كاملاً"
+    }
+  },
+  "events": {
+    "title": "اكتشف الفعاليات",
+    "subtitle": "تصفح الفعاليات القادمة من جميع أنحاء العالم، مترجمة تلقائياً إلى لغتك.",
+    "why_polyevent": "لماذا PolyEvent؟",
+    "built_for_global": "مصمم للفرق والمجتمعات العالمية",
+    "empty": {
+      "title": "لا توجد فعاليات بعد",
+      "description": "تحقق لاحقاً من الفعاليات القادمة، أو أنشئ واحدة بنفسك!"
+    },
+    "card": {
+      "original_language": "الأصلية",
+      "translating": "جارٍ الترجمة...",
+      "view_event": "عرض الفعالية"
+    },
+    "detail": {
+      "original_language": "اللغة الأصلية",
+      "translation_pending": "جارٍ إنشاء الترجمة. يتم عرض المحتوى الأصلي...",
+      "location": "الموقع",
+      "date_time": "التاريخ والوقت",
+      "comments": "التعليقات",
+      "no_comments": "لا توجد تعليقات بعد. كن أول من يشارك أفكاره!",
+      "back_to_events": "العودة إلى الفعاليات"
+    },
+    "create": {
+      "title": "إنشاء فعالية",
+      "subtitle": "شارك فعالية باللغة التي تختارها. سنترجمها تلقائياً لجمهور عالمي.",
+      "language_label": "لغة الفعالية",
+      "language_hint": "هذه هي اللغة التي ستكتب بها الفعالية.",
+      "title_label": "العنوان",
+      "title_placeholder": "امنح فعاليتك عنواناً جذاباً",
+      "description_label": "الوصف",
+      "description_placeholder": "أخبر الناس عن موضوع فعاليتك...",
+      "start_time_label": "وقت البدء",
+      "end_time_label": "وقت الانتهاء",
+      "location_label": "الموقع",
+      "location_placeholder": "أين سيُقام هذا الحدث؟ (اختياري)",
+      "submit": "إنشاء حدث",
+      "submitting": "جارٍ الإنشاء...",
+      "toast": {
+        "success": "تم إنشاء الحدث!",
+        "success_description": "ستظهر الترجمات تلقائياً عند اكتمالها."
+      }
+    }
+  },
+  "comments": {
+    "placeholder": "شارك أفكارك...",
+    "submit": "نشر التعليق",
+    "submitting": "جارٍ النشر...",
+    "translation_pending": "الترجمة قيد الانتظار أو غير متوفرة",
+    "retry_translation": "إعادة محاولة الترجمة",
+    "toast": {
+      "success": "تمت إضافة التعليق",
+      "success_description": "ستظهر الترجمات تلقائياً."
+    },
+    "view_original": "عرض النص الأصلي",
+    "view_translated": "عرض الترجمة"
+  },
+  "home": {
+    "badge": "مصمم للمجتمعات العالمية",
+    "hero_title": "اكتشف الفعاليات بلغتك",
+    "hero_description": "يزيل PolyEvent الحواجز اللغوية من الفعاليات العالمية. ينشئ المنظمون المحتوى مرة واحدة. يقرأ الحضور ويعلقون ويتفاعلون — بلغتهم الخاصة.",
+    "powered_by": "مدعوم بواسطة Lingo.dev · مبني باستخدام Next.js و Supabase",
+    "explore_events": "تصفح الفعاليات",
+    "create_event": "إنشاء فعالية",
+    "features": {
+      "auto_translation": {
+        "title": "الترجمة التلقائية",
+        "description": "يتم ترجمة تفاصيل الفعاليات والمناقشات تلقائياً باستخدام Lingo.dev. لا حاجة للترجمة اليدوية، ولا تكرار للمحتوى."
+      },
+      "multilingual_discussions": {
+        "title": "مناقشات باللغة الأم",
+        "description": "اكتب التعليقات بلغتك الخاصة. يقرأها الآخرون بلغتهم — بينما يُحفظ النص الأصلي دائمًا."
+      },
+      "built_for_web": {
+        "title": "مصمم للويب الحديث",
+        "description": "مصمم ببنية تعتمد على الخادم أولاً باستخدام Next.js وSupabase لتحقيق السرعة والموثوقية وقابلية التوسع."
+      }
+    },
+    "cta": {
+      "title": "تستضيف حدثًا دوليًا؟",
+      "description": "دع الأشخاص يشاركون بشكل طبيعي — دون أن تقف اللغة عائقًا.",
+      "button": "أنشئ حدثك"
+    }
+  }
+}

@@ -1,0 +1,147 @@
+{
+  "common": {
+    "go_home": "返回首页",
+    "login": "登录",
+    "logging_out": "正在退出...",
+    "logout": "退出登录",
+    "loading": "加载中",
+    "error": "出现了问题",
+    "back": "返回",
+    "language": "语言",
+    "anonymous": "匿名",
+    "events_count": "{count} 个活动",
+    "event_count_singular": "1 个活动",
+    "available": "可用"
+  },
+  "nav": {
+    "brand_tagline": "多语言活动",
+    "events": "活动",
+    "create": "创建",
+    "create_event": "创建活动",
+    "open_menu": "打开菜单",
+    "close_menu": "关闭菜单"
+  },
+  "errors": {
+    "not_found": "您访问的页面不存在。",
+    "unauthorized": "您无权访问此页面。",
+    "unexpected": "发生了意外错误，请重试。"
+  },
+  "auth": {
+    "welcome_back": "欢迎回来",
+    "sign_in_to_continue": "请登录以继续",
+    "check_your_email": "请查收您的邮箱",
+    "code_sent_to": "验证码已发送至",
+    "continue_with_github": "使用 GitHub 继续",
+    "or_continue_with_email": "或使用邮箱继续",
+    "email_placeholder": "name@example.com",
+    "continue_with_email": "使用邮箱继续",
+    "sending_code": "正在发送验证码…",
+    "enter_code": "输入验证码",
+    "code_hint": "请输入您邮箱收到的 6-8 位验证码",
+    "verify_and_sign_in": "验证并登录",
+    "verifying": "正在验证…",
+    "resend_code": "重新发送验证码",
+    "terms_agreement": "继续即表示您同意我们的",
+    "terms_of_service": "服务条款",
+    "and": "和",
+    "privacy_policy": "隐私政策",
+    "toast": {
+      "code_sent": "验证码已发送！",
+      "check_inbox": "请查收您的邮箱",
+      "welcome_back": "欢迎回来！",
+      "redirecting": "正在为您跳转…",
+      "error": "出现错误",
+      "failed_to_send": "验证码发送失败",
+      "verification_failed": "验证失败",
+      "invalid_code": "验证码无效或已过期",
+      "new_code_sent": "新验证码已发送！",
+      "resend_failed": "无法重新发送验证码",
+      "invalid_email": "请输入有效的邮箱地址",
+      "enter_full_code": "请输入完整的验证码"
+    }
+  },
+  "events": {
+    "title": "发现活动",
+    "subtitle": "浏览来自世界各地的即将举行的活动，内容会自动翻译为您的语言。",
+    "why_polyevent": "为什么选择 PolyEvent？",
+    "built_for_global": "为全球团队和社区打造",
+    "empty": {
+      "title": "暂无活动",
+      "description": "请稍后查看即将举行的活动，或自己创建一个！"
+    },
+    "card": {
+      "original_language": "原文",
+      "translating": "正在翻译…",
+      "view_event": "查看活动"
+    },
+    "detail": {
+      "original_language": "原始语言",
+      "translation_pending": "正在生成翻译，当前显示原文内容…",
+      "location": "地点",
+      "date_time": "日期和时间",
+      "comments": "评论",
+      "no_comments": "还没有评论，快来发表你的看法吧！",
+      "back_to_events": "返回活动列表"
+    },
+    "create": {
+      "title": "创建活动",
+      "subtitle": "用您选择的语言分享活动，我们会自动为全球用户翻译。",
+      "language_label": "活动语言",
+      "language_hint": "这是您填写活动内容所用的语言。",
+      "title_label": "标题",
+      "title_placeholder": "为您的活动起一个吸引人的标题",
+      "description_label": "描述",
+      "description_placeholder": "告诉大家您的活动内容…",
+      "start_time_label": "开始时间",
+      "end_time_label": "结束时间",
+      "location_label": "地点",
+      "location_placeholder": "活动在哪里举行？（可选）",
+      "submit": "创建活动",
+      "submitting": "正在创建…",
+      "toast": {
+        "success": "活动已创建！",
+        "success_description": "翻译完成后将自动显示。"
+      }
+    }
+  },
+  "comments": {
+    "placeholder": "分享你的想法…",
+    "submit": "发布评论",
+    "submitting": "正在发布…",
+    "translation_pending": "翻译待处理或不可用",
+    "retry_translation": "重试翻译",
+    "toast": {
+      "success": "评论已添加",
+      "success_description": "翻译将自动显示。"
+    },
+    "view_original": "查看原文",
+    "view_translated": "查看翻译"
+  },
+  "home": {
+    "badge": "为全球社区打造",
+    "hero_title": "用你的语言发现活动",
+    "hero_description": "PolyEvent 打破全球活动的语言障碍。组织者只需一次发布，参与者即可用自己的语言阅读、评论和互动。",
+    "powered_by": "由 Lingo.dev 提供技术支持 · 基于 Next.js 和 Supabase 构建",
+    "explore_events": "浏览活动",
+    "create_event": "创建活动",
+    "features": {
+      "auto_translation": {
+        "title": "自动翻译",
+        "description": "活动详情和讨论将通过 Lingo.dev 自动翻译。无需手动本地化，无需重复内容。"
+      },
+      "multilingual_discussions": {
+        "title": "母语交流",
+        "description": "用自己的语言发表评论，其他人会以他们的语言阅读——原文始终保留。"
+      },
+      "built_for_web": {
+        "title": "为现代 Web 而生",
+        "description": "采用服务器优先架构，结合 Next.js 和 Supabase，兼顾速度、可靠性与可扩展性。"
+      }
+    },
+    "cta": {
+      "title": "要举办国际活动吗？",
+      "description": "让每个人都能自然参与——语言不再成为障碍。",
+      "button": "创建您的活动"
+    }
+  }
+}

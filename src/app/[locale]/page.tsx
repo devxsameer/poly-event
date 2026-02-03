@@ -31,12 +31,12 @@ export default async function HomePage({
   ];
 
   return (
-    <main className="relative min-h-screen bg-background text-foreground overflow-hidden">
+    <main className="relative min-h-[calc(100vh-4rem)] bg-background text-foreground overflow-x-hidden">
       {/* Background Effects */}
-      <div className="pointer-events-none absolute inset-0 -z-10">
+      <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
         {/* Gradient orbs */}
-        <div className="absolute -left-40 top-0 h-80 w-80 rounded-full bg-purple-500/10 blur-[100px]" />
-        <div className="absolute -right-40 top-40 h-80 w-80 rounded-full bg-blue-500/10 blur-[100px]" />
+        <div className="absolute -left-40 top-20 h-80 w-80 rounded-full bg-purple-500/10 blur-[100px]" />
+        <div className="absolute -right-40 top-60 h-80 w-80 rounded-full bg-blue-500/10 blur-[100px]" />
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-150 w-150 rounded-full bg-linear-to-r from-purple-500/5 to-blue-500/5 blur-[100px]" />
         {/* Grid pattern */}
         <div
@@ -50,7 +50,7 @@ export default async function HomePage({
 
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         {/* HERO SECTION */}
-        <section className="flex flex-col items-center justify-center text-center pt-20 pb-16 sm:pt-24 sm:pb-24">
+        <section className="flex flex-col items-center justify-center text-center pt-16 pb-12 sm:pt-20 sm:pb-20">
           {/* Badge */}
           <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-border/60 bg-card/50 px-4 py-2 text-sm font-medium text-muted-foreground backdrop-blur-sm transition-colors hover:border-border hover:text-foreground">
             <span className="flex h-2 w-2 rounded-full bg-green-500 animate-pulse" />
@@ -58,7 +58,7 @@ export default async function HomePage({
           </div>
 
           {/* Hero Title */}
-          <h1 className="max-w-4xl text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl xl:text-8xl">
+          <h1 className="max-w-4xl text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl xl:text-7xl">
             <span className="bg-clip-text text-transparent bg-linear-to-b from-foreground via-foreground to-foreground/50">
               {dict.home.hero_title}
             </span>
@@ -74,7 +74,7 @@ export default async function HomePage({
             <Button
               asChild
               size="lg"
-              className="h-12 min-w-[160px] rounded-full text-base font-medium shadow-lg shadow-primary/20 transition-all hover:shadow-xl hover:shadow-primary/30"
+              className="h-12 min-w-40 rounded-full text-base font-medium shadow-lg shadow-primary/20 transition-all hover:shadow-xl hover:shadow-primary/30"
             >
               <Link href={`/${locale}/events`}>
                 {dict.home.explore_events}
@@ -86,9 +86,9 @@ export default async function HomePage({
               asChild
               size="lg"
               variant="outline"
-              className="h-12 min-w-[160px] rounded-full text-base font-medium border-border/60 hover:bg-accent hover:border-border"
+              className="h-12 min-w-40 rounded-full text-base font-medium border-border/60 hover:bg-accent hover:border-border"
             >
-              <Link href={`/${locale}/dashboard/events/new`}>
+              <Link href={`/${locale}/events/new`}>
                 {dict.home.create_event}
               </Link>
             </Button>
@@ -101,13 +101,13 @@ export default async function HomePage({
         </section>
 
         {/* FEATURES SECTION */}
-        <section className="py-16 sm:py-24">
+        <section className="py-12 sm:py-20">
           <div className="text-center mb-12">
             <h2 className="text-2xl sm:text-3xl font-bold text-foreground">
-              Why PolyEvent?
+              {dict.events.why_polyevent}
             </h2>
             <p className="mt-3 text-muted-foreground max-w-xl mx-auto">
-              Built for global teams and communities
+              {dict.events.built_for_global}
             </p>
           </div>
 
@@ -118,7 +118,7 @@ export default async function HomePage({
                 className="group relative overflow-hidden border-border/50 bg-card/30 backdrop-blur-sm transition-all duration-300 hover:border-border hover:bg-card/60 hover:shadow-xl"
               >
                 {/* Top highlight line */}
-                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-foreground/10 to-transparent" />
+                <div className="absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-foreground/10 to-transparent" />
 
                 <CardHeader className="pb-4">
                   <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-foreground/5 text-foreground transition-colors group-hover:bg-foreground/10">
@@ -137,14 +137,14 @@ export default async function HomePage({
         </section>
 
         {/* CTA SECTION */}
-        <section className="py-16 sm:py-24">
-          <div className="relative overflow-hidden rounded-3xl border border-border/50 bg-gradient-to-b from-card/50 to-card/20 backdrop-blur-sm">
+        <section className="py-12 sm:py-20">
+          <div className="relative overflow-hidden rounded-3xl border border-border/50 bg-linear-to-b from-card/50 to-card/20 backdrop-blur-sm">
             {/* Background gradient */}
-            <div className="absolute inset-0 -z-10 bg-gradient-to-br from-purple-500/5 via-transparent to-blue-500/5" />
+            <div className="absolute inset-0 -z-10 bg-linear-to-br from-purple-500/5 via-transparent to-blue-500/5" />
 
-            <div className="px-6 py-16 sm:px-12 sm:py-20 lg:px-20 lg:py-24 text-center">
-              <h2 className="text-3xl font-bold sm:text-4xl lg:text-5xl">
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70">
+            <div className="px-6 py-12 sm:px-12 sm:py-16 lg:px-20 lg:py-20 text-center">
+              <h2 className="text-2xl font-bold sm:text-3xl lg:text-4xl">
+                <span className="bg-clip-text text-transparent bg-linear-to-r from-foreground to-foreground/70">
                   {dict.home.cta.title}
                 </span>
               </h2>
@@ -155,9 +155,9 @@ export default async function HomePage({
                 <Button
                   asChild
                   size="lg"
-                  className="h-12 rounded-full px-8 text-base font-medium shadow-lg"
+                  className="h-12 rounded-full px-8 text-base font-medium shadow-lg shadow-primary/20"
                 >
-                  <Link href={`/${locale}/dashboard/events/new`}>
+                  <Link href={`/${locale}/events/new`}>
                     {dict.home.cta.button}
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
@@ -168,7 +168,7 @@ export default async function HomePage({
         </section>
 
         {/* Footer spacing */}
-        <div className="h-16" />
+        <div className="h-12" />
       </div>
     </main>
   );

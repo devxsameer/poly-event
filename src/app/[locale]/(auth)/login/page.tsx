@@ -1,4 +1,4 @@
-import LoginForm from "@/features/auth/components/login-form";
+import LoginForm from "@/components/auth/login-form";
 import { getDictionary } from "@/features/i18n/get-dictionary";
 
 export default async function LoginPage({

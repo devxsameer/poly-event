@@ -132,16 +132,25 @@ export default function LoginForm({ locale, dict }: LoginFormProps) {
   }
 
   return (
-    <main className="relative flex min-h-[90vh] items-center justify-center px-4 bg-background overflow-x-hidden">
+    <main className="relative flex min-h-[calc(100vh-4rem)] items-center justify-center px-4 bg-background overflow-x-hidden">
       {/* Background effects */}
       <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-size-[40px_40px]" />
-        <div className="absolute -left-40 top-0 h-80 w-80 rounded-full bg-purple-500/10 blur-[100px]" />
-        <div className="absolute -right-40 bottom-0 h-80 w-80 rounded-full bg-blue-500/10 blur-[100px]" />
+        <div className="absolute -left-40 top-20 h-80 w-80 rounded-full bg-purple-500/10 blur-[100px]" />
+        <div className="absolute -right-40 top-60 h-80 w-80 rounded-full bg-blue-500/10 blur-[100px]" />
+        <div
+          className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-size-[60px_60px]"
+          style={{
+            maskImage:
+              "radial-gradient(ellipse 80% 50% at 50% 0%, black 70%, transparent 100%)",
+          }}
+        />
       </div>
 
-      <div className="w-full max-w-sm mx-auto">
-        <Card className="border-border/50 bg-card shadow-xl">
+      <div className="w-full max-w-sm mx-auto py-8">
+        <Card className="border-border/50 bg-card/30 backdrop-blur-sm shadow-xl overflow-hidden">
+          {/* Top highlight line */}
+          <div className="h-1 bg-linear-to-r from-purple-500 via-blue-500 to-purple-500" />
+
           <CardHeader className="text-center pb-2 pt-6">
             {/* Compact inline logo + title */}
             <div className="flex items-center justify-center gap-2 mb-2">

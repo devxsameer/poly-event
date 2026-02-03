@@ -9,6 +9,7 @@ export type Comment = {
   event_id: string;
   content: string;
   original_language: string;
+  original_content: string;
   created_at: string;
   hasTranslation: boolean;
 };

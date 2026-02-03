@@ -2,16 +2,24 @@
   "common": {
     "go_home": "होम पर जाएं",
     "login": "लॉग इन करें",
+    "logging_out": "लॉग आउट हो रहा है...",
     "logout": "साइन आउट करें",
     "loading": "लोड हो रहा है",
     "error": "कुछ गलत हो गया",
-    "back": "वापस"
+    "back": "वापस",
+    "language": "भाषा",
+    "anonymous": "अनाम",
+    "events_count": "{count} इवेंट",
+    "event_count_singular": "1 इवेंट",
+    "available": "उपलब्ध"
   },
   "nav": {
     "brand_tagline": "बहुभाषी इवेंट",
     "events": "इवेंट",
     "create": "बनाएं",
-    "create_event": "इवेंट बनाएं"
+    "create_event": "इवेंट बनाएं",
+    "open_menu": "मेन्यू खोलें",
+    "close_menu": "मेन्यू बंद करें"
   },
   "errors": {
     "not_found": "आप जिस पेज को खोज रहे हैं वह मौजूद नहीं है।",
@@ -51,6 +59,63 @@
       "invalid_email": "कृपया एक मान्य ईमेल पता दर्ज करें",
       "enter_full_code": "कृपया पूरा सत्यापन कोड दर्ज करें"
     }
+  },
+  "events": {
+    "title": "इवेंट्स खोजें",
+    "subtitle": "दुनिया भर के आगामी इवेंट्स ब्राउज़ करें, जो स्वचालित रूप से आपकी भाषा में अनुवादित हैं।",
+    "why_polyevent": "PolyEvent क्यों?",
+    "built_for_global": "वैश्विक टीमों और समुदायों के लिए बनाया गया",
+    "empty": {
+      "title": "अभी तक कोई इवेंट नहीं",
+      "description": "आगामी इवेंट्स के लिए बाद में देखें, या खुद एक बनाएं!"
+    },
+    "card": {
+      "original_language": "मूल",
+      "translating": "अनुवाद हो रहा है...",
+      "view_event": "इवेंट देखें"
+    },
+    "detail": {
+      "original_language": "मूल भाषा",
+      "translation_pending": "अनुवाद तैयार किया जा रहा है। मूल सामग्री दिखाई जा रही है…",
+      "location": "स्थान",
+      "date_time": "तारीख और समय",
+      "comments": "टिप्पणियां",
+      "no_comments": "अभी तक कोई टिप्पणी नहीं। अपने विचार साझा करने वाले पहले व्यक्ति बनें!",
+      "back_to_events": "इवेंट्स पर वापस जाएं"
+    },
+    "create": {
+      "title": "इवेंट बनाएं",
+      "subtitle": "अपनी पसंदीदा भाषा में इवेंट साझा करें। हम इसे वैश्विक दर्शकों के लिए स्वचालित रूप से अनुवाद कर देंगे।",
+      "language_label": "इवेंट की भाषा",
+      "language_hint": "यह वह भाषा है जिसमें आप इवेंट लिखेंगे।",
+      "title_label": "शीर्षक",
+      "title_placeholder": "अपने इवेंट को एक आकर्षक शीर्षक दें",
+      "description_label": "विवरण",
+      "description_placeholder": "लोगों को बताएं कि आपका इवेंट किस बारे में है...",
+      "start_time_label": "शुरुआत का समय",
+      "end_time_label": "समाप्ति का समय",
+      "location_label": "स्थान",
+      "location_placeholder": "यह इवेंट कहाँ हो रहा है? (वैकल्पिक)",
+      "submit": "इवेंट बनाएं",
+      "submitting": "बनाया जा रहा है...",
+      "toast": {
+        "success": "इवेंट बन गया!",
+        "success_description": "अनुवाद पूरे होते ही स्वचालित रूप से दिखाई देंगे।"
+      }
+    }
+  },
+  "comments": {
+    "placeholder": "अपने विचार साझा करें...",
+    "submit": "कमेंट पोस्ट करें",
+    "submitting": "पोस्ट किया जा रहा है...",
+    "translation_pending": "अनुवाद लंबित या अनुपलब्ध",
+    "retry_translation": "अनुवाद पुनः प्रयास करें",
+    "toast": {
+      "success": "टिप्पणी जोड़ी गई",
+      "success_description": "अनुवाद स्वचालित रूप से दिखाई देंगे।"
+    },
+    "view_original": "मूल देखें",
+    "view_translated": "अनुवादित देखें"
   },
   "home": {
     "badge": "वैश्विक समुदायों के लिए बनाया गया",

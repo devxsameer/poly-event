@@ -39,7 +39,10 @@ export async function getCommentsForEvent(
       event_id: comment.event_id,
       original_language: comment.original_language,
       created_at: comment.created_at,
+
       content: translation?.translated_content ?? comment.content,
+      original_content: comment.content,
+
       hasTranslation: Boolean(translation),
     };
   });

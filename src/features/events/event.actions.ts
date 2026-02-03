@@ -5,51 +5,34 @@ import {
   requestEventTranslation,
   scheduleEventTranslations,
 } from "./event.translate";
-
-export type CreateEventActionState =
-  | { status: "idle" }
-  | { status: "error"; message: string }
-  | {
-      status: "success";
-      locale: string;
-      eventId: string;
-    };
+import { ActionResult, ok, fail } from "@/features/shared/action-result";
 
 export async function createEventAction(
-  _prev: CreateEventActionState,
+  _prev: unknown,
   formData: FormData,
-): Promise<CreateEventActionState> {
+): Promise<ActionResult<{ eventId: string; locale: string }>> {
   const parsed = createEventSchema.safeParse(Object.fromEntries(formData));
 
   if (!parsed.success) {
-    return {
-      status: "error",
-      message: parsed.error.issues.map((e) => e.message).join(", "),
-    };
+    return fail(parsed.error.issues.map((i) => i.message).join(", "));
   }
-
-  let eventId: string;
 
   try {
-    eventId = await createEvent(parsed.data);
+    const eventId = await createEvent(parsed.data);
+
+    // 🔥 non-blocking background translations
+    scheduleEventTranslations({
+      eventId,
+      sourceLocale: parsed.data.original_language,
+    });
+
+    return ok({
+      eventId,
+      locale: parsed.data.original_language,
+    });
   } catch (err) {
-    return {
-      status: "error",
-      message: err instanceof Error ? err.message : "Failed to create event",
-    };
+    return fail(err instanceof Error ? err.message : "Failed to create event");
   }
-
-  // Schedule background work (non-blocking)
-  scheduleEventTranslations({
-    eventId,
-    sourceLocale: parsed.data.original_language,
-  });
-
-  return {
-    status: "success",
-    locale: parsed.data.original_language,
-    eventId,
-  };
 }
 
 export async function triggerEventTranslation(

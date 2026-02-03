@@ -168,18 +168,22 @@
   }
 }
 
-/* Scrollbar width calculation for layout stability */
-:root {
-  --scrollbar-width: 0px;
+/* Scrollbar - always reserve space to prevent layout shift */
+html {
+  overflow-y: scroll; /* Fallback for older browsers */
+  scrollbar-gutter: stable;
 }
 
-@supports (scrollbar-gutter: stable) {
-  html {
-    scrollbar-gutter: stable;
-  }
-  :root {
-    --scrollbar-width: 0px;
-  }
+/* Prevent Radix UI from adding padding when dialogs/dropdowns open */
+body {
+  overflow-y: scroll !important;
+  padding-right: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* Also prevent scroll lock from Radix portals */
+[data-radix-scroll-area-viewport] {
+  scrollbar-gutter: stable;
 }
 
 /* Dark scrollbar styling */

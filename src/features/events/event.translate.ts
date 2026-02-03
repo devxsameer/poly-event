@@ -1,12 +1,13 @@
 "use server";
 
 import { createServerSupabaseClient } from "@/lib/supabase/server";
-import { LingoDotDevEngine } from "lingo.dev/sdk";
+import { localizeObject } from "@/lib/lingo";
 import { locales } from "@/features/i18n/config";
-
-const lingo = new LingoDotDevEngine({
-  apiKey: process.env.LINGODOTDEV_API_KEY!,
-});
+import {
+  canTranslate,
+  markTranslationFailure,
+  markTranslationSuccess,
+} from "../translation/translation.guard";
 
 export async function scheduleEventTranslations({
   eventId,
@@ -19,7 +20,11 @@ export async function scheduleEventTranslations({
     if (target === sourceLocale) continue;
 
     requestEventTranslation(eventId, sourceLocale, target).catch((err) => {
-      console.error("[translation-failed]", { eventId, target, err });
+      console.error("[event-translation-failed]", {
+        eventId,
+        target,
+        err,
+      });
     });
   }
 }
@@ -29,18 +34,18 @@ export async function requestEventTranslation(
   sourceLocale: string,
   targetLocale: string,
 ) {
-  if (!targetLocale || sourceLocale === targetLocale) return;
+  if (sourceLocale === targetLocale) return;
 
   const supabase = await createServerSupabaseClient();
 
-  const { data: existing } = await supabase
+  const { data: exists } = await supabase
     .from("event_translations")
     .select("id")
     .eq("event_id", eventId)
     .eq("locale", targetLocale)
     .maybeSingle();
 
-  if (existing) return;
+  if (exists) return;
 
   const { data: event } = await supabase
     .from("events")
@@ -50,12 +55,18 @@ export async function requestEventTranslation(
 
   if (!event) return;
 
+  const key = `event:${eventId}:${targetLocale}`;
+
+  const guard = canTranslate(key, `${event.title} ${event.description}`);
+
+  if (!guard.allowed) {
+    console.warn("[translation-skipped]", guard.reason);
+    return;
+  }
+
   try {
-    const translated = await lingo.localizeObject(
-      {
-        title: event.title,
-        description: event.description,
-      },
+    const translated = await localizeObject(
+      { title: event.title, description: event.description },
       { sourceLocale, targetLocale },
     );
 
@@ -65,11 +76,10 @@ export async function requestEventTranslation(
       translated_title: translated.title,
       translated_description: translated.description,
     });
+
+    markTranslationSuccess(key);
   } catch (err) {
-    console.error("[translation-error]", {
-      eventId,
-      targetLocale,
-      err,
-    });
+    markTranslationFailure(key);
+    throw err;
   }
 }

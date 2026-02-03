@@ -1,13 +1,29 @@
 import { z } from "zod";
 import { locales } from "@/features/i18n/config";
 
+// Helper to transform empty strings to null
+const emptyToNull = z
+  .string()
+  .transform((val) => (val === "" ? null : val))
+  .nullable();
+
 export const createEventSchema = z
   .object({
-    title: z.string().min(3, "Title is too short").max(100),
-    description: z.string().min(10, "Description is too short"),
-    start_time: z.string(),
-    end_time: z.string().optional().nullable(),
-    location: z.string().optional().nullable(),
+    title: z
+      .string()
+      .min(1, "Title is required")
+      .min(3, "Title must be at least 3 characters")
+      .max(100, "Title must be 100 characters or less"),
+    description: z
+      .string()
+      .min(1, "Description is required")
+      .min(10, "Description must be at least 10 characters"),
+    start_time: z
+      .string()
+      .min(1, "Start time is required")
+      .refine((val) => !isNaN(Date.parse(val)), "Invalid start time"),
+    end_time: emptyToNull.optional(),
+    location: emptyToNull.optional(),
     original_language: z.enum(locales),
   })
   .refine(

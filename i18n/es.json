@@ -2,16 +2,24 @@
   "common": {
     "go_home": "Ir al inicio",
     "login": "Iniciar sesión",
+    "logging_out": "Cerrando sesión...",
     "logout": "Cerrar sesión",
     "loading": "Cargando",
     "error": "Algo salió mal",
-    "back": "Atrás"
+    "back": "Atrás",
+    "language": "Idioma",
+    "anonymous": "Anónimo",
+    "events_count": "{count} eventos",
+    "event_count_singular": "1 evento",
+    "available": "disponible"
   },
   "nav": {
     "brand_tagline": "Eventos multilingües",
     "events": "Eventos",
     "create": "Crear",
-    "create_event": "Crear evento"
+    "create_event": "Crear evento",
+    "open_menu": "Abrir menú",
+    "close_menu": "Cerrar menú"
   },
   "errors": {
     "not_found": "La página que buscas no existe.",
@@ -51,6 +59,63 @@
       "invalid_email": "Por favor, introduce una dirección de correo electrónico válida",
       "enter_full_code": "Por favor, introduce el código de verificación completo"
     }
+  },
+  "events": {
+    "title": "Descubre eventos",
+    "subtitle": "Explora próximos eventos de todo el mundo, traducidos automáticamente a tu idioma.",
+    "why_polyevent": "¿Por qué PolyEvent?",
+    "built_for_global": "Creado para equipos y comunidades globales",
+    "empty": {
+      "title": "Aún no hay eventos",
+      "description": "Vuelve más tarde para ver próximos eventos, ¡o crea uno tú mismo!"
+    },
+    "card": {
+      "original_language": "Original",
+      "translating": "Traduciendo...",
+      "view_event": "Ver evento"
+    },
+    "detail": {
+      "original_language": "Idioma original",
+      "translation_pending": "Se está generando la traducción. Mostrando contenido original…",
+      "location": "Ubicación",
+      "date_time": "Fecha y hora",
+      "comments": "Comentarios",
+      "no_comments": "Aún no hay comentarios. ¡Sé el primero en compartir tus ideas!",
+      "back_to_events": "Volver a eventos"
+    },
+    "create": {
+      "title": "Crear evento",
+      "subtitle": "Comparte un evento en el idioma que elijas. Lo traduciremos automáticamente para una audiencia global.",
+      "language_label": "Idioma del evento",
+      "language_hint": "Este es el idioma en el que escribirás el evento.",
+      "title_label": "Título",
+      "title_placeholder": "Dale a tu evento un título atractivo",
+      "description_label": "Descripción",
+      "description_placeholder": "Cuéntale a la gente de qué trata tu evento...",
+      "start_time_label": "Hora de inicio",
+      "end_time_label": "Hora de finalización",
+      "location_label": "Ubicación",
+      "location_placeholder": "¿Dónde se realizará este evento? (opcional)",
+      "submit": "Crear evento",
+      "submitting": "Creando...",
+      "toast": {
+        "success": "¡Evento creado!",
+        "success_description": "Las traducciones aparecerán automáticamente a medida que se completen."
+      }
+    }
+  },
+  "comments": {
+    "placeholder": "Comparte tus ideas...",
+    "submit": "Publicar comentario",
+    "submitting": "Publicando...",
+    "translation_pending": "Traducción pendiente o no disponible",
+    "retry_translation": "Reintentar traducción",
+    "toast": {
+      "success": "Comentario añadido",
+      "success_description": "Las traducciones aparecerán automáticamente."
+    },
+    "view_original": "Ver original",
+    "view_translated": "Ver traducido"
   },
   "home": {
     "badge": "Creado para comunidades globales",

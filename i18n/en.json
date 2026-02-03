@@ -2,17 +2,25 @@
   "common": {
     "go_home": "Go home",
     "login": "Log in",
+    "logging_out": "Logging out...",
     "logout": "Sign out",
     "loading": "Loading",
     "error": "Something went wrong",
-    "back": "Back"
+    "back": "Back",
+    "language": "Language",
+    "anonymous": "Anonymous",
+    "events_count": "{count} events",
+    "event_count_singular": "1 event",
+    "available": "available"
   },
 
   "nav": {
     "brand_tagline": "Multilingual events",
     "events": "Events",
     "create": "Create",
-    "create_event": "Create event"
+    "create_event": "Create event",
+    "open_menu": "Open menu",
+    "close_menu": "Close menu"
   },
 
   "errors": {
@@ -54,6 +62,65 @@
       "invalid_email": "Please enter a valid email address",
       "enter_full_code": "Please enter the full verification code"
     }
+  },
+
+  "events": {
+    "title": "Discover Events",
+    "subtitle": "Browse upcoming events from around the world, automatically translated to your language.",
+    "why_polyevent": "Why PolyEvent?",
+    "built_for_global": "Built for global teams and communities",
+    "empty": {
+      "title": "No events yet",
+      "description": "Check back later for upcoming events, or create one yourself!"
+    },
+    "card": {
+      "original_language": "Original",
+      "translating": "Translating...",
+      "view_event": "View event"
+    },
+    "detail": {
+      "original_language": "Original language",
+      "translation_pending": "Translation is being generated. Showing original content…",
+      "location": "Location",
+      "date_time": "Date & Time",
+      "comments": "Comments",
+      "no_comments": "No comments yet. Be the first to share your thoughts!",
+      "back_to_events": "Back to events"
+    },
+    "create": {
+      "title": "Create event",
+      "subtitle": "Share an event in your chosen language. We'll translate it automatically for a global audience.",
+      "language_label": "Event language",
+      "language_hint": "This is the language you'll write the event in.",
+      "title_label": "Title",
+      "title_placeholder": "Give your event a catchy title",
+      "description_label": "Description",
+      "description_placeholder": "Tell people what your event is about...",
+      "start_time_label": "Start time",
+      "end_time_label": "End time",
+      "location_label": "Location",
+      "location_placeholder": "Where is this event happening? (optional)",
+      "submit": "Create event",
+      "submitting": "Creating...",
+      "toast": {
+        "success": "Event created!",
+        "success_description": "Translations will appear automatically as they complete."
+      }
+    }
+  },
+
+  "comments": {
+    "placeholder": "Share your thoughts...",
+    "submit": "Post comment",
+    "submitting": "Posting...",
+    "translation_pending": "Translation pending or unavailable",
+    "retry_translation": "Retry translation",
+    "toast": {
+      "success": "Comment added",
+      "success_description": "Translations will appear automatically."
+    },
+    "view_original": "View original",
+    "view_translated": "View translated"
   },
 
   "home": {

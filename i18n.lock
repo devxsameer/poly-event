@@ -3,14 +3,22 @@ checksums:
   4188a166aad2705b4f09401f924502ed:
     common/go_home: 2fca8149d843587f1e77c63c39c57449
     common/login: 9fb886eff8d1d67d8bb79f5c3f78edde
+    common/logging_out: 1f6ffb1548b7d3dbcec0ce6103b59bbc
     common/logout: 6d842546a84e919c519bf8cbffdf25a0
     common/loading: c6bc8c380e83336c81a92594d3f23000
     common/error: a3cd2f01c073f1f5ff436d4b132d39cf
     common/back: f541015a827e37cb3b1234e56bc2aa3c
+    common/language: 277fd1a41cc237a437cd1d5e4a80463b
+    common/anonymous: 77b5222e710cc1dae073dae32309f8ed
+    common/events_count: 846d946899acb479c4a0a383b917e27b
+    common/event_count_singular: 6b43d5fb099b6274415b577855a51578
+    common/available: 9c8f657f33007fcae972e3ec4581824b
     nav/brand_tagline: 271039c866bde80d40e2539b3d6a9d00
     nav/events: d17179a947e9687dd2338ca524b26b63
     nav/create: 757ccd28dd533ff3a933355273c1e32a
     nav/create_event: 5ff2a762a1a5662ac056947b06a068c4
+    nav/open_menu: 44c5ee3792630e3dfcaae5b52a81ef32
+    nav/close_menu: ec0f56ea3b39e28bc1aca998f4321a11
     errors/not_found: bc60a89540a83277acafc260831eb75b
     errors/unauthorized: bfec21e17f94e2ab40a7854a3c56f6a4
     errors/unexpected: dd9aef0a9c3638442bc8f6151feb33d6
@@ -44,6 +52,47 @@ checksums:
     auth/toast/resend_failed: 7b46ac418efd578a44f950fe91c2b7e9
     auth/toast/invalid_email: 8de4bc8832b11b380bc4cbcedc16e48b
     auth/toast/enter_full_code: e5b6c4e9574a54b1dd8c2dbcb49f8b2c
+    events/title: b25fcdb97f8ad7838a9c4ac57b01ba9e
+    events/subtitle: b3c601001071ef64f6bad47387594966
+    events/why_polyevent: 4c8f04fd1c6493e290d4ef6e334509bc
+    events/built_for_global: e6fe1aff8d5ccb6ba42239a4bef87301
+    events/empty/title: 02eb8664d40259a4c62bb5657f3c7d01
+    events/empty/description: 2f5af3dc58fb1bad84b7d6f2695760b9
+    events/card/original_language: 7e55782bdf7cb49f5616b326c003c278
+    events/card/translating: 602b092655724238f713953e906c9032
+    events/card/view_event: b8fa67110edd21eb7db172a781275224
+    events/detail/original_language: 736c2e3329208b53e977b01cfaebcebc
+    events/detail/translation_pending: 39b39e5f1925c6b9516475abc79f685a
+    events/detail/location: 036cbdfe32bbe9ad67b5d06ef6a02a16
+    events/detail/date_time: 5a19c918fd2a60855bb6b3b1517f5fec
+    events/detail/comments: 502237cd1044491c48494aa60967a985
+    events/detail/no_comments: 4e3d3503b7baabe32bed68edb1ab981a
+    events/detail/back_to_events: 5fa44dfa6f24f0da449665f5fad79177
+    events/create/title: 5ff2a762a1a5662ac056947b06a068c4
+    events/create/subtitle: 8701f3e56cfbd984e42acb475ac89a47
+    events/create/language_label: d9b3dafe11b5f564011ee33cb1788519
+    events/create/language_hint: 5dc11085d134e3beefb97fd077937d7e
+    events/create/title_label: 344e64395eaff6822a57d18623853e1a
+    events/create/title_placeholder: 6d44ec0f0a6edd623252d5d4bbf296a0
+    events/create/description_label: e17686a22ffad04cc7bb70524ed4478b
+    events/create/description_placeholder: f250a34bfdce380663a8975f16820f74
+    events/create/start_time_label: e4b89e056780606bc35acc06c2138cbc
+    events/create/end_time_label: d874e0a79649ea9e2b38aead2710d286
+    events/create/location_label: 036cbdfe32bbe9ad67b5d06ef6a02a16
+    events/create/location_placeholder: 7845418c38c7a9e1129b9083549eae3f
+    events/create/submit: 5ff2a762a1a5662ac056947b06a068c4
+    events/create/submitting: c949fe6aa47b326f345b405fe9c4d6e7
+    events/create/toast/success: 7e92917f99d59713e3e8a824832966c8
+    events/create/toast/success_description: a9f4d75a6ba62f7b59bc87c213013a1e
+    comments/placeholder: 58002a2febe63af7934561dc370b4821
+    comments/submit: e378392e69778e53341f59e94287ab93
+    comments/submitting: 602b00f9aff0046a801bc8ba6af09e7c
+    comments/translation_pending: 2431025aef818184aeb752c9c31254fc
+    comments/retry_translation: ceef341f87c00ca73f5bff6ecd9b94f6
+    comments/toast/success: 60693496353449b7e961142bc82cae65
+    comments/toast/success_description: d6ca4dce60b1a021cc64476c40d2847f
+    comments/view_original: 6bf44f3127eaea754aedcc4980b0016e
+    comments/view_translated: b18027d1af2a18ecf1a4bf0ad1ef765c
     home/badge: e5f98a384ebfd5c6d8241aaa9f82286a
     home/hero_title: d345f31802e288297733770ab032063b
     home/hero_description: 44bef0799603fad2d17220ea36f0e2a0

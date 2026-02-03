@@ -20,3 +20,18 @@ export type EventBase = {
 export type EventWithTranslation = EventBase & {
   hasTranslation: boolean;
 };
+
+export type RawEvent = {
+  id: string;
+  original_language: string;
+  start_time: string;
+  end_time: string | null;
+  location: string | null;
+  title: string;
+  description: string;
+  event_translations?: {
+    locale: string;
+    translated_title: string;
+    translated_description: string;
+  }[];
+};

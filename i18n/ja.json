@@ -1,0 +1,147 @@
+{
+  "common": {
+    "go_home": "ホームに戻る",
+    "login": "ログイン",
+    "logging_out": "ログアウト中...",
+    "logout": "サインアウト",
+    "loading": "読み込み中",
+    "error": "問題が発生しました",
+    "back": "戻る",
+    "language": "言語",
+    "anonymous": "匿名",
+    "events_count": "{count}件のイベント",
+    "event_count_singular": "1件のイベント",
+    "available": "利用可能"
+  },
+  "nav": {
+    "brand_tagline": "多言語イベント",
+    "events": "イベント",
+    "create": "作成",
+    "create_event": "イベントを作成",
+    "open_menu": "メニューを開く",
+    "close_menu": "メニューを閉じる"
+  },
+  "errors": {
+    "not_found": "お探しのページが見つかりません。",
+    "unauthorized": "このページにアクセスする権限がありません。",
+    "unexpected": "予期しないエラーが発生しました。もう一度お試しください。"
+  },
+  "auth": {
+    "welcome_back": "おかえりなさい",
+    "sign_in_to_continue": "続行するにはサインインしてください",
+    "check_your_email": "メールを確認してください",
+    "code_sent_to": "コードの送信先",
+    "continue_with_github": "GitHubで続ける",
+    "or_continue_with_email": "またはメールで続ける",
+    "email_placeholder": "name@example.com",
+    "continue_with_email": "メールで続ける",
+    "sending_code": "コードを送信中...",
+    "enter_code": "コードを入力",
+    "code_hint": "メールに記載された6〜8桁のコードを入力してください",
+    "verify_and_sign_in": "確認してサインイン",
+    "verifying": "確認中...",
+    "resend_code": "コードを再送信",
+    "terms_agreement": "続行することで、以下に同意したものとみなされます",
+    "terms_of_service": "利用規約",
+    "and": "および",
+    "privacy_policy": "プライバシーポリシー",
+    "toast": {
+      "code_sent": "コードを送信しました",
+      "check_inbox": "受信トレイを確認してください",
+      "welcome_back": "おかえりなさい",
+      "redirecting": "リダイレクト中...",
+      "error": "問題が発生しました",
+      "failed_to_send": "コードの送信に失敗しました",
+      "verification_failed": "確認に失敗しました",
+      "invalid_code": "無効または期限切れのコードです",
+      "new_code_sent": "新しいコードを送信しました",
+      "resend_failed": "コードを再送信できませんでした",
+      "invalid_email": "有効なメールアドレスを入力してください",
+      "enter_full_code": "確認コードを完全に入力してください"
+    }
+  },
+  "events": {
+    "title": "イベントを探す",
+    "subtitle": "世界中の今後のイベントを閲覧できます。自動的にあなたの言語に翻訳されます。",
+    "why_polyevent": "PolyEventを選ぶ理由",
+    "built_for_global": "グローバルチームとコミュニティのために構築",
+    "empty": {
+      "title": "まだイベントがありません",
+      "description": "後ほど今後のイベントをご確認いただくか、ご自身でイベントを作成してください。"
+    },
+    "card": {
+      "original_language": "原文",
+      "translating": "翻訳中...",
+      "view_event": "イベントを見る"
+    },
+    "detail": {
+      "original_language": "原文の言語",
+      "translation_pending": "翻訳を生成中です。元のコンテンツを表示しています...",
+      "location": "場所",
+      "date_time": "日時",
+      "comments": "コメント",
+      "no_comments": "まだコメントがありません。最初に感想を共有しましょう。",
+      "back_to_events": "イベント一覧に戻る"
+    },
+    "create": {
+      "title": "イベントを作成",
+      "subtitle": "選択した言語でイベントを共有してください。グローバルな視聴者向けに自動的に翻訳します。",
+      "language_label": "イベントの言語",
+      "language_hint": "イベントを記述する言語です。",
+      "title_label": "タイトル",
+      "title_placeholder": "イベントに魅力的なタイトルを付けてください",
+      "description_label": "説明",
+      "description_placeholder": "イベントの内容を説明してください...",
+      "start_time_label": "開始時刻",
+      "end_time_label": "終了時刻",
+      "location_label": "場所",
+      "location_placeholder": "このイベントはどこで開催されますか？（任意）",
+      "submit": "イベントを作成",
+      "submitting": "作成中...",
+      "toast": {
+        "success": "イベントを作成しました！",
+        "success_description": "翻訳は完了次第、自動的に表示されます。"
+      }
+    }
+  },
+  "comments": {
+    "placeholder": "あなたの考えを共有してください...",
+    "submit": "コメントを投稿",
+    "submitting": "投稿中...",
+    "translation_pending": "翻訳待ちまたは利用不可",
+    "retry_translation": "翻訳を再試行",
+    "toast": {
+      "success": "コメントを追加しました",
+      "success_description": "翻訳は自動的に表示されます。"
+    },
+    "view_original": "原文を表示",
+    "view_translated": "翻訳を表示"
+  },
+  "home": {
+    "badge": "グローバルコミュニティのために構築",
+    "hero_title": "あなたの言語でイベントを見つける",
+    "hero_description": "PolyEventはグローバルイベントから言語の壁を取り除きます。主催者は一度書くだけ。参加者は自分の言語で読み、コメントし、交流できます。",
+    "powered_by": "Powered by Lingo.dev · Built with Next.js & Supabase",
+    "explore_events": "イベントを閲覧",
+    "create_event": "イベントを作成",
+    "features": {
+      "auto_translation": {
+        "title": "自動翻訳",
+        "description": "イベントの詳細とディスカッションはLingo.devを使用して自動的に翻訳されます。手動でのローカライゼーションや重複したコンテンツは不要です。"
+      },
+      "multilingual_discussions": {
+        "title": "母国語でのディスカッション",
+        "description": "自分の言語でコメントを書くと、他の人はそれぞれの言語で読むことができます。元のテキストは常に保持されます。"
+      },
+      "built_for_web": {
+        "title": "モダンウェブ向けに構築",
+        "description": "Next.jsとSupabaseを使用したサーバーファーストアーキテクチャで設計され、速度、信頼性、拡張性を実現しています。"
+      }
+    },
+    "cta": {
+      "title": "国際的なイベントを開催しますか？",
+      "description": "言語の壁を気にせず、自然に参加できるようにしましょう。",
+      "button": "イベントを作成"
+    }
+  }
+}

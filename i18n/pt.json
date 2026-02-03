@@ -1,0 +1,147 @@
+{
+  "common": {
+    "go_home": "Ir para início",
+    "login": "Entrar",
+    "logging_out": "Saindo...",
+    "logout": "Sair",
+    "loading": "Carregando",
+    "error": "Algo correu mal",
+    "back": "Voltar",
+    "language": "Idioma",
+    "anonymous": "Anónimo",
+    "events_count": "{count} eventos",
+    "event_count_singular": "1 evento",
+    "available": "disponível"
+  },
+  "nav": {
+    "brand_tagline": "Eventos multilingues",
+    "events": "Eventos",
+    "create": "Criar",
+    "create_event": "Criar evento",
+    "open_menu": "Abrir menu",
+    "close_menu": "Fechar menu"
+  },
+  "errors": {
+    "not_found": "A página que procura não existe.",
+    "unauthorized": "Não tem acesso a esta página.",
+    "unexpected": "Ocorreu um erro inesperado. Por favor, tente novamente."
+  },
+  "auth": {
+    "welcome_back": "Bem-vindo de volta",
+    "sign_in_to_continue": "Inicie sessão para continuar",
+    "check_your_email": "Verifique o seu e-mail",
+    "code_sent_to": "Código enviado para",
+    "continue_with_github": "Continuar com GitHub",
+    "or_continue_with_email": "ou continuar com email",
+    "email_placeholder": "nome@exemplo.com",
+    "continue_with_email": "Continuar com email",
+    "sending_code": "Enviando código...",
+    "enter_code": "Inserir código",
+    "code_hint": "Insira o código de 6-8 dígitos do seu email",
+    "verify_and_sign_in": "Verificar e iniciar sessão",
+    "verifying": "Verificando...",
+    "resend_code": "Reenviar código",
+    "terms_agreement": "Ao continuar, concorda com os nossos",
+    "terms_of_service": "Termos de serviço",
+    "and": "e",
+    "privacy_policy": "Política de privacidade",
+    "toast": {
+      "code_sent": "Código enviado!",
+      "check_inbox": "Verifique a sua caixa de entrada em",
+      "welcome_back": "Bem-vindo de volta!",
+      "redirecting": "Redirecionando agora...",
+      "error": "Algo correu mal",
+      "failed_to_send": "Falha ao enviar código",
+      "verification_failed": "Verificação falhou",
+      "invalid_code": "Código inválido ou expirado",
+      "new_code_sent": "Novo código enviado!",
+      "resend_failed": "Não foi possível reenviar código",
+      "invalid_email": "Por favor, insira um endereço de email válido",
+      "enter_full_code": "Por favor, insira o código de verificação completo"
+    }
+  },
+  "events": {
+    "title": "Descobrir eventos",
+    "subtitle": "Navegue pelos próximos eventos de todo o mundo, traduzidos automaticamente para o seu idioma.",
+    "why_polyevent": "Porquê PolyEvent?",
+    "built_for_global": "Criado para equipas e comunidades globais",
+    "empty": {
+      "title": "Ainda não há eventos",
+      "description": "Volte mais tarde para ver os próximos eventos ou crie um você mesmo!"
+    },
+    "card": {
+      "original_language": "Original",
+      "translating": "A traduzir...",
+      "view_event": "Ver evento"
+    },
+    "detail": {
+      "original_language": "Idioma original",
+      "translation_pending": "A tradução está a ser gerada. A mostrar conteúdo original…",
+      "location": "Localização",
+      "date_time": "Data e hora",
+      "comments": "Comentários",
+      "no_comments": "Ainda não há comentários. Seja o primeiro a partilhar os seus pensamentos!",
+      "back_to_events": "Voltar aos eventos"
+    },
+    "create": {
+      "title": "Criar evento",
+      "subtitle": "Partilhe um evento no idioma que escolher. Vamos traduzi-lo automaticamente para uma audiência global.",
+      "language_label": "Idioma do evento",
+      "language_hint": "Este é o idioma em que vai escrever o evento.",
+      "title_label": "Título",
+      "title_placeholder": "Dê ao seu evento um título cativante",
+      "description_label": "Descrição",
+      "description_placeholder": "Diga às pessoas sobre o que é o seu evento...",
+      "start_time_label": "Hora de início",
+      "end_time_label": "Hora de término",
+      "location_label": "Local",
+      "location_placeholder": "Onde este evento acontecerá? (opcional)",
+      "submit": "Criar evento",
+      "submitting": "Criando...",
+      "toast": {
+        "success": "Evento criado!",
+        "success_description": "As traduções aparecerão automaticamente conforme forem concluídas."
+      }
+    }
+  },
+  "comments": {
+    "placeholder": "Compartilhe seus pensamentos...",
+    "submit": "Publicar comentário",
+    "submitting": "Publicando...",
+    "translation_pending": "Tradução pendente ou indisponível",
+    "retry_translation": "Tentar tradução novamente",
+    "toast": {
+      "success": "Comentário adicionado",
+      "success_description": "As traduções aparecerão automaticamente."
+    },
+    "view_original": "Ver original",
+    "view_translated": "Ver traduzido"
+  },
+  "home": {
+    "badge": "Criado para comunidades globais",
+    "hero_title": "Descubra eventos no seu idioma",
+    "hero_description": "O PolyEvent remove barreiras linguísticas de eventos globais. Os organizadores escrevem uma vez. Os participantes leem, comentam e interagem — no seu próprio idioma.",
+    "powered_by": "Desenvolvido por Lingo.dev · Criado com Next.js & Supabase",
+    "explore_events": "Explorar eventos",
+    "create_event": "Criar um evento",
+    "features": {
+      "auto_translation": {
+        "title": "Tradução automática",
+        "description": "Os detalhes do evento e as discussões são traduzidos automaticamente usando Lingo.dev. Sem localização manual, sem conteúdo duplicado."
+      },
+      "multilingual_discussions": {
+        "title": "Discussões em idioma nativo",
+        "description": "Escreva comentários no seu próprio idioma. Outros leem-nos no deles — enquanto o texto original é sempre preservado."
+      },
+      "built_for_web": {
+        "title": "Construído para a web moderna",
+        "description": "Projetado com uma arquitetura server-first usando Next.js e Supabase para velocidade, confiabilidade e escalabilidade."
+      }
+    },
+    "cta": {
+      "title": "Está a organizar um evento internacional?",
+      "description": "Deixe as pessoas participarem naturalmente — sem que o idioma seja um obstáculo.",
+      "button": "Criar o seu evento"
+    }
+  }
+}
