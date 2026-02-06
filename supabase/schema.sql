@@ -142,3 +142,70 @@ with check (auth.uid() = author_id);
 create policy "comment translations are public"
 on public.comment_translations for select
 using (true);
+
+
+-- ============================
+-- INDEXES
+-- ============================
+create index if not exists events_creator_id_idx on public.events(creator_id);
+create index if not exists events_start_time_idx on public.events(start_time);
+create index if not exists event_translations_event_id_locale_idx on public.event_translations(event_id, locale);
+create index if not exists comments_event_id_idx on public.comments(event_id);
+create index if not exists comments_author_id_idx on public.comments(author_id);
+create index if not exists comment_translations_comment_id_locale_idx on public.comment_translations(comment_id, locale);
+
+-- ============================
+-- CONSTRAINTS
+-- ============================
+alter table public.comments
+add constraint comments_content_length
+check (char_length(content) <= 500);
+
+alter table public.comments
+add constraint comments_content_not_empty
+check (char_length(content) > 0);
+
+alter table public.comment_translations
+add constraint comment_translations_translated_content_length
+check (char_length(translated_content) <= 500);
+
+alter table public.comment_translations
+add constraint comment_translations_translated_content_not_empty
+check (char_length(translated_content) > 0);
+
+alter table public.events
+add constraint events_title_length
+check (char_length(title) <= 255);
+
+alter table public.events
+add constraint events_description_length
+check (char_length(description) <= 1000);
+
+alter table public.events
+add constraint events_title_not_empty
+check (char_length(title) > 0);
+
+alter table public.events
+add constraint events_description_not_empty
+check (char_length(description) > 0);
+
+alter table public.event_translations
+add constraint event_translations_translated_title_length
+check (char_length(translated_title) <= 255);
+
+alter table public.event_translations
+add constraint event_translations_translated_description_length
+check (char_length(translated_description) <= 5000);
+
+
+-- ============================
+-- TRANSLATION FAILURES
+-- ============================
+create table if not exists public.translation_failures (
+  id uuid primary key default gen_random_uuid(),
+  entity_type text not null, -- 'event' | 'comment'
+  entity_id uuid not null,
+  target_locale text not null,
+  error_message text,
+  created_at timestamptz default now()
+);

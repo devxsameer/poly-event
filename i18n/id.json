@@ -45,6 +45,16 @@
     "terms_of_service": "Ketentuan layanan",
     "and": "dan",
     "privacy_policy": "Kebijakan privasi",
+    "errors": {
+      "email_invalid": "Silakan masukkan alamat email yang valid",
+      "otp_invalid": "Masukkan kode 6 digit yang dikirim ke email Anda",
+      "otp_expired": "Kode ini telah kedaluwarsa. Silakan minta kode baru.",
+      "invalid_credentials": "Kredensial login tidak valid",
+      "email_not_confirmed": "Silakan konfirmasi alamat email Anda terlebih dahulu",
+      "too_many_requests": "Terlalu banyak percobaan. Silakan coba lagi nanti.",
+      "unauthorized": "Anda tidak memiliki izin untuk melakukan tindakan ini",
+      "unknown": "Terjadi kesalahan. Silakan coba lagi."
+    },
     "toast": {
       "code_sent": "Kode terkirim!",
       "check_inbox": "Periksa kotak masuk Anda di",

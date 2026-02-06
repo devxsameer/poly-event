@@ -45,6 +45,16 @@
     "terms_of_service": "Nutzungsbedingungen",
     "and": "und",
     "privacy_policy": "Datenschutzrichtlinie",
+    "errors": {
+      "email_invalid": "Bitte geben Sie eine gültige E-Mail-Adresse ein",
+      "otp_invalid": "Geben Sie den 6-stelligen Code ein, der an Ihre E-Mail gesendet wurde",
+      "otp_expired": "Dieser Code ist abgelaufen. Bitte fordern Sie einen neuen an.",
+      "invalid_credentials": "Ungültige Anmeldedaten",
+      "email_not_confirmed": "Bitte bestätigen Sie zuerst Ihre E-Mail-Adresse",
+      "too_many_requests": "Zu viele Versuche. Bitte versuchen Sie es später erneut.",
+      "unauthorized": "Sie sind nicht berechtigt, diese Aktion auszuführen",
+      "unknown": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut."
+    },
     "toast": {
       "code_sent": "Code gesendet!",
       "check_inbox": "Überprüfen Sie Ihr Postfach unter",

@@ -40,6 +40,14 @@ checksums:
     auth/terms_of_service: 5add91f519e39025708e54a7eb7a9fc5
     auth/and: ce8b9bb44f031705708a70e068bb73c8
     auth/privacy_policy: 7459744a63ef8af4e517a09024bd7c08
+    auth/errors/email_invalid: 8de4bc8832b11b380bc4cbcedc16e48b
+    auth/errors/otp_invalid: a9a399f1ae22299bd0949fd0355aa056
+    auth/errors/otp_expired: 57eb38d63d1afdceb68e4323185e24c5
+    auth/errors/invalid_credentials: 0c4fab95457c398bd2edc98a4c5ca18a
+    auth/errors/email_not_confirmed: ecb7bc5dd1cf512d09c32417bda4fc09
+    auth/errors/too_many_requests: ebd5ef1e5adc8d2cd3bbe15862d12453
+    auth/errors/unauthorized: c08e20c4111356f0c2e5aa218342fe43
+    auth/errors/unknown: c62a7718d9a1e9c4ffb707807550f836
     auth/toast/code_sent: f3fcb73dc0076404b1396322c98797ff
     auth/toast/check_inbox: 075a22441449f91a6752aa042ac77bbb
     auth/toast/welcome_back: 69eb28c44f7168b1df0455ad2a62588c

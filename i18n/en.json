@@ -48,6 +48,16 @@
     "terms_of_service": "Terms of Service",
     "and": "and",
     "privacy_policy": "Privacy Policy",
+    "errors": {
+      "email_invalid": "Please enter a valid email address",
+      "otp_invalid": "Enter the 6-digit code sent to your email",
+      "otp_expired": "This code has expired. Please request a new one.",
+      "invalid_credentials": "Invalid login credentials",
+      "email_not_confirmed": "Please confirm your email address first",
+      "too_many_requests": "Too many attempts. Please try again later.",
+      "unauthorized": "You are not authorized to perform this action",
+      "unknown": "Something went wrong. Please try again."
+    },
     "toast": {
       "code_sent": "Code sent!",
       "check_inbox": "Check your inbox at",

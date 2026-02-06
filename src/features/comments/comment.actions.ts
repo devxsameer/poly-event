@@ -3,7 +3,7 @@
 import { createCommentSchema } from "./comment.schema";
 import { createComment } from "./comment.service";
 import { requestCommentTranslation } from "./comment.translate";
-import { ActionResult, ok, fail } from "@/features/shared/action-result";
+import { ActionResult, ok, fail } from "@/features/shared/action-state";
 
 // Legacy type for backwards compatibility
 export type CreateCommentState =

@@ -5,7 +5,7 @@ import {
   requestEventTranslation,
   scheduleEventTranslations,
 } from "./event.translate";
-import { ActionResult, ok, fail } from "@/features/shared/action-result";
+import { ActionResult, ok, fail } from "@/features/shared/action-state";
 
 export async function createEventAction(
   _prev: unknown,

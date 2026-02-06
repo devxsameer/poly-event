@@ -21,7 +21,7 @@ import { Card, CardContent } from "@/components/ui/card";
 
 import { Dictionary } from "@/features/i18n/dictionary.types";
 import { createEventAction } from "@/features/events/event.actions";
-import { ActionResult } from "@/features/shared/action-result";
+import { ActionResult } from "@/features/shared/action-state";
 
 interface CreateEventFormProps {
   initialLocale: string;

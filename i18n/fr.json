@@ -45,6 +45,16 @@
     "terms_of_service": "Conditions d'utilisation",
     "and": "et",
     "privacy_policy": "Politique de confidentialité",
+    "errors": {
+      "email_invalid": "Veuillez saisir une adresse e-mail valide",
+      "otp_invalid": "Saisissez le code à 6 chiffres envoyé à votre e-mail",
+      "otp_expired": "Ce code a expiré. Veuillez en demander un nouveau.",
+      "invalid_credentials": "Identifiants de connexion invalides",
+      "email_not_confirmed": "Veuillez d'abord confirmer votre adresse e-mail",
+      "too_many_requests": "Trop de tentatives. Veuillez réessayer plus tard.",
+      "unauthorized": "Vous n'êtes pas autorisé à effectuer cette action",
+      "unknown": "Une erreur s'est produite. Veuillez réessayer."
+    },
     "toast": {
       "code_sent": "Code envoyé !",
       "check_inbox": "Vérifiez votre boîte de réception à",

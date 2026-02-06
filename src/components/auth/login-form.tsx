@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useActionState, useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
 import {
   Card,
@@ -25,10 +25,10 @@ import {
   ArrowLeft,
   KeyRound,
   Github,
-  CheckCircle2,
   Sparkles,
 } from "lucide-react";
 import { Dictionary } from "@/features/i18n/dictionary.types";
+import { initialActionState } from "@/features/shared/action-state";
 
 type Step = "email" | "otp";
 
@@ -38,96 +38,47 @@ interface LoginFormProps {
 }
 
 export default function LoginForm({ locale, dict }: LoginFormProps) {
-  const [step, setStep] = useState<Step>("email");
   const [email, setEmail] = useState("");
-  const [isPending, startTransition] = useTransition();
   const [isGitHubLoading, setIsGitHubLoading] = useState(false);
+  const [sendState, sendAction, sending] = useActionState(
+    sendOTP,
+    initialActionState,
+  );
+  const [verifyState, verifyAction, verifying] = useActionState(
+    verifyOTP,
+    initialActionState,
+  );
+
+  const step: Step = sendState.status === "success" ? "otp" : "email";
+
+  const sendError = sendState.status === "error" ? sendState.error : undefined;
+  const lastHandledStatus = useRef<"success" | "error" | null>(null);
 
   const t = dict.auth;
 
-  function handleSendOTP(formData: FormData) {
-    const emailValue = formData.get("email") as string;
-    const normalized = emailValue.trim().toLowerCase();
-
-    if (!normalized || !normalized.includes("@")) {
-      toast.error(t.toast.invalid_email, {
-        position: "top-center",
-      });
+  useEffect(() => {
+    if (sendState.status !== "success" && sendState.status !== "error") return;
+    if (lastHandledStatus.current === sendState.status) {
       return;
     }
-
-    setEmail(normalized);
-
-    startTransition(async () => {
-      try {
-        await sendOTP(normalized);
-        setStep("otp");
-        toast.success(t.toast.code_sent, {
-          description: `${t.toast.check_inbox} ${normalized}`,
-          icon: <CheckCircle2 className="h-4 w-4" />,
-          position: "top-center",
-        });
-      } catch (err: unknown) {
-        const message =
-          err instanceof Error ? err.message : t.toast.failed_to_send;
-        toast.error(t.toast.error, {
-          description: message,
-          position: "top-center",
-        });
-      }
-    });
-  }
-
-  function handleVerifyOTP(formData: FormData) {
-    const code = formData.get("code") as string;
-
-    if (!code || code.length < 6) {
-      toast.error(t.toast.enter_full_code, {
+    if (sendState.status === "success") {
+      toast.success(t.toast.code_sent, {
+        description: `${t.toast.check_inbox} ${email}`,
         position: "top-center",
       });
-      return;
     }
 
-    startTransition(async () => {
-      try {
-        await verifyOTP(email, code, `/${locale}`);
-        toast.success(t.toast.welcome_back, {
-          description: t.toast.redirecting,
-          icon: <Sparkles className="h-4 w-4" />,
-          position: "top-center",
-        });
-      } catch (err: unknown) {
-        const message =
-          err instanceof Error ? err.message : t.toast.invalid_code;
-        toast.error(t.toast.verification_failed, {
-          description: message,
-          position: "top-center",
-        });
-      }
-    });
-  }
-
-  function handleResendCode() {
-    startTransition(async () => {
-      try {
-        await sendOTP(email);
-        toast.success(t.toast.new_code_sent, {
-          description: `${t.toast.check_inbox} ${email}`,
-          position: "top-center",
-        });
-      } catch (err: unknown) {
-        const message =
-          err instanceof Error ? err.message : t.toast.failed_to_send;
-        toast.error(t.toast.resend_failed, {
-          description: message,
-          position: "top-center",
-        });
-      }
-    });
-  }
+    if (sendState.status === "error" && sendError) {
+      toast.error(t.toast.error, {
+        description: t.errors[sendError] ?? t.toast.failed_to_send,
+        position: "top-center",
+      });
+    }
+    lastHandledStatus.current = sendState.status;
+  }, [sendState.status, sendError, email, t]);
 
   function handleGoBack() {
-    setStep("email");
+    lastHandledStatus.current = null;
     setEmail("");
   }
 
@@ -189,7 +140,7 @@ export default function LoginForm({ locale, dict }: LoginFormProps) {
                     type="submit"
                     variant="outline"
                     className="w-full h-11 gap-2"
-                    disabled={isPending || isGitHubLoading}
+                    disabled={isGitHubLoading}
                   >
                     {isGitHubLoading ? (
                       <Loader2 className="h-4 w-4 animate-spin" />
@@ -212,7 +163,7 @@ export default function LoginForm({ locale, dict }: LoginFormProps) {
                 </div>
 
                 {/* Email OTP */}
-                <form action={handleSendOTP} className="space-y-4">
+                <form action={sendAction} className="space-y-4">
                   <div className="space-y-2">
                     <Label htmlFor="email" className="sr-only">
                       Email
@@ -220,31 +171,30 @@ export default function LoginForm({ locale, dict }: LoginFormProps) {
                     <Input
                       id="email"
                       name="email"
-                      type="email"
                       placeholder={t.email_placeholder}
-                      required
                       autoComplete="email"
                       autoFocus
-                      disabled={isPending}
+                      onChange={(e) => setEmail(e.target.value)}
+                      disabled={sending}
                       className="h-11 bg-secondary/30 border-border/50 focus:border-foreground/50"
                     />
                   </div>
                   <Button
                     type="submit"
                     className="w-full h-11"
-                    disabled={isPending}
+                    disabled={sending}
                   >
-                    {isPending ? (
+                    {sending ? (
                       <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                     ) : (
                       <Mail className="mr-2 h-4 w-4" />
                     )}
-                    {isPending ? t.sending_code : t.continue_with_email}
+                    {sending ? t.sending_code : t.continue_with_email}
                   </Button>
                 </form>
               </>
             ) : (
-              <form action={handleVerifyOTP} className="space-y-4">
+              <form action={verifyAction} className="space-y-4">
                 <div className="space-y-2">
                   <Label htmlFor="code" className="sr-only">
                     Verification Code
@@ -253,12 +203,18 @@ export default function LoginForm({ locale, dict }: LoginFormProps) {
                     id="code"
                     name="code"
                     placeholder={t.enter_code}
-                    maxLength={8}
+                    inputMode="numeric"
+                    maxLength={6}
                     autoFocus
                     autoComplete="one-time-code"
-                    disabled={isPending}
+                    disabled={verifying}
                     className="h-14 text-center text-2xl tracking-[0.5em] font-mono bg-secondary/30 border-border/50 focus:border-foreground/50"
                   />
+                  {verifyState.status === "error" && (
+                    <p className="text-sm text-destructive">
+                      {t.errors[verifyState.error]}
+                    </p>
+                  )}
                   <p className="text-xs text-center text-muted-foreground">
                     {t.code_hint}
                   </p>
@@ -267,14 +223,14 @@ export default function LoginForm({ locale, dict }: LoginFormProps) {
                 <Button
                   type="submit"
                   className="w-full h-11"
-                  disabled={isPending}
+                  disabled={verifying}
                 >
-                  {isPending ? (
+                  {verifying ? (
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                   ) : (
                     <KeyRound className="mr-2 h-4 w-4" />
                   )}
-                  {isPending ? t.verifying : t.verify_and_sign_in}
+                  {verifying ? t.verifying : t.verify_and_sign_in}
                 </Button>
 
                 <div className="flex items-center justify-between pt-2">
@@ -284,20 +240,21 @@ export default function LoginForm({ locale, dict }: LoginFormProps) {
                     size="sm"
                     className="text-xs text-muted-foreground hover:text-foreground"
                     onClick={handleGoBack}
-                    disabled={isPending}
+                    disabled={sending}
                   >
                     <ArrowLeft className="mr-1 h-3 w-3" />
                     {dict.common.back}
                   </Button>
+                  <input type="hidden" name="email" value={email} />
+                  <input type="hidden" name="locale" value={locale} />
                   <Button
-                    type="button"
                     variant="ghost"
+                    formAction={sendAction}
                     size="sm"
                     className="text-xs text-muted-foreground hover:text-foreground"
-                    onClick={handleResendCode}
-                    disabled={isPending}
+                    disabled={sending}
                   >
-                    {isPending ? (
+                    {sending ? (
                       <Loader2 className="mr-1 h-3 w-3 animate-spin" />
                     ) : null}
                     {t.resend_code}

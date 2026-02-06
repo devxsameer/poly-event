@@ -2,13 +2,13 @@ import { createServerSupabaseClient } from "@/lib/supabase/server";
 
 export async function requireUser() {
   const supabase = await createServerSupabaseClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  const { data } = await supabase.auth.getUser();
 
-  if (!user) {
-    throw new Error("Unauthorized");
+  if (!data.user) {
+    throw Object.assign(new Error("Unauthorized"), {
+      code: "UNAUTHORIZED",
+    });
   }
 
-  return user;
+  return data.user;
 }

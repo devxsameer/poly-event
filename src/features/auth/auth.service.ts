@@ -1,6 +1,8 @@
 "use server";
 
 import { createServerSupabaseClient } from "@/lib/supabase/server";
+import { mapSupabaseAuthError } from "./supabase-error.mapper";
+import { AuthError } from "./auth.errors";
 
 export async function signInWithGitHubService(next: string) {
   const supabase = await createServerSupabaseClient();
@@ -24,22 +26,26 @@ export async function sendOtpService(email: string) {
   const supabase = await createServerSupabaseClient();
 
   const { error } = await supabase.auth.signInWithOtp({
-    email: email.trim().toLowerCase(),
+    email,
   });
 
-  if (error) throw new Error(error.message);
+  if (error) {
+    throw new AuthError(mapSupabaseAuthError(error));
+  }
 }
 
 export async function verifyOtpService(email: string, code: string) {
   const supabase = await createServerSupabaseClient();
 
   const { error } = await supabase.auth.verifyOtp({
-    email: email.trim().toLowerCase(),
+    email,
     token: code,
-    type: "email", // assumes OTP (not magic link)
+    type: "email",
   });
 
-  if (error) throw new Error(error.message);
+  if (error) {
+    throw new AuthError(mapSupabaseAuthError(error));
+  }
 }
 
 export async function signOutService() {

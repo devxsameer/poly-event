@@ -45,6 +45,16 @@
     "terms_of_service": "利用規約",
     "and": "および",
     "privacy_policy": "プライバシーポリシー",
+    "errors": {
+      "email_invalid": "有効なメールアドレスを入力してください",
+      "otp_invalid": "メールに送信された6桁のコードを入力してください",
+      "otp_expired": "このコードは期限切れです。新しいコードをリクエストしてください。",
+      "invalid_credentials": "ログイン情報が無効です",
+      "email_not_confirmed": "最初にメールアドレスを確認してください",
+      "too_many_requests": "試行回数が多すぎます。しばらくしてからもう一度お試しください。",
+      "unauthorized": "この操作を実行する権限がありません",
+      "unknown": "問題が発生しました。もう一度お試しください。"
+    },
     "toast": {
       "code_sent": "コードを送信しました",
       "check_inbox": "受信トレイを確認してください",
