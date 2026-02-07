@@ -39,7 +39,10 @@ interface LoginFormProps {
 
 export default function LoginForm({ locale, dict }: LoginFormProps) {
   const [email, setEmail] = useState("");
-  const [isGitHubLoading, setIsGitHubLoading] = useState(false);
+  const [oauthState, oauthAction, oauthPending] = useActionState(
+    signInWithGitHub,
+    initialActionState,
+  );
   const [sendState, sendAction, sending] = useActionState(
     sendOTP,
     initialActionState,
@@ -55,6 +58,15 @@ export default function LoginForm({ locale, dict }: LoginFormProps) {
   const lastHandledStatus = useRef<"success" | "error" | null>(null);
 
   const t = dict.auth;
+
+  useEffect(() => {
+    if (oauthState.status !== "error") return;
+
+    toast.error(t.toast.error, {
+      description: t.errors[oauthState.error] ?? t.toast.error,
+      position: "top-center",
+    });
+  }, [oauthState, t]);
 
   useEffect(() => {
     if (sendState.status !== "success" && sendState.status !== "error") return;
@@ -131,18 +143,15 @@ export default function LoginForm({ locale, dict }: LoginFormProps) {
             {step === "email" ? (
               <>
                 {/* GitHub OAuth */}
-                <form
-                  action={signInWithGitHub}
-                  onSubmit={() => setIsGitHubLoading(true)}
-                >
-                  <input type="hidden" name="next" value={`/${locale}`} />
+                <form action={oauthAction}>
+                  <input type="hidden" name="next" value={"/en"} />
                   <Button
                     type="submit"
                     variant="outline"
                     className="w-full h-11 gap-2"
-                    disabled={isGitHubLoading}
+                    disabled={oauthPending}
                   >
-                    {isGitHubLoading ? (
+                    {oauthPending ? (
                       <Loader2 className="h-4 w-4 animate-spin" />
                     ) : (
                       <Github className="h-4 w-4" />
@@ -199,6 +208,8 @@ export default function LoginForm({ locale, dict }: LoginFormProps) {
                   <Label htmlFor="code" className="sr-only">
                     Verification Code
                   </Label>
+                  <input type="hidden" name="email" value={email} />
+                  <input type="hidden" name="next" value={`/${locale}`} />
                   <Input
                     id="code"
                     name="code"
@@ -211,7 +222,7 @@ export default function LoginForm({ locale, dict }: LoginFormProps) {
                     className="h-14 text-center text-2xl tracking-[0.5em] font-mono bg-secondary/30 border-border/50 focus:border-foreground/50"
                   />
                   {verifyState.status === "error" && (
-                    <p className="text-sm text-destructive">
+                    <p className="text-sm text-center text-destructive">
                       {t.errors[verifyState.error]}
                     </p>
                   )}
@@ -245,8 +256,6 @@ export default function LoginForm({ locale, dict }: LoginFormProps) {
                     <ArrowLeft className="mr-1 h-3 w-3" />
                     {dict.common.back}
                   </Button>
-                  <input type="hidden" name="email" value={email} />
-                  <input type="hidden" name="locale" value={locale} />
                   <Button
                     variant="ghost"
                     formAction={sendAction}

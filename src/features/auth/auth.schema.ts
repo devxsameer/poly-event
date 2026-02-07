@@ -2,7 +2,7 @@ import { z } from "zod";
 import { AUTH_ERROR_KEYS } from "./auth.errors";
 
 export const emailSchema = z
-  .email({ message: AUTH_ERROR_KEYS.EMAIL_INVALID })
+  .email({ message: AUTH_ERROR_KEYS.INVALID_CREDENTIALS })
   .trim()
   .toLowerCase();
 
@@ -18,3 +18,12 @@ export const verifyOtpSchema = z.object({
   email: emailSchema,
   code: otpSchema,
 });
+
+export const nextPathSchema = z
+  .string()
+  .min(1)
+  .max(200)
+  .refine(
+    (val) => val.startsWith("/") && !val.startsWith("//"),
+    "Invalid redirect path",
+  );

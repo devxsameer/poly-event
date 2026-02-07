@@ -1,47 +1,45 @@
 "use server";
+
 import { createEventSchema } from "./event.schema";
 import { createEvent } from "./event.service";
-import {
-  requestEventTranslation,
-  scheduleEventTranslations,
-} from "./event.translate";
-import { ActionResult, ok, fail } from "@/features/shared/action-state";
+import { seedEventTranslations } from "./event.translate";
+import { ok, fail } from "@/features/shared/action-state";
+import { CreateEventState } from "./event.types";
 
 export async function createEventAction(
-  _prev: unknown,
+  _prevState: unknown,
   formData: FormData,
-): Promise<ActionResult<{ eventId: string; locale: string }>> {
+): Promise<CreateEventState> {
   const parsed = createEventSchema.safeParse(Object.fromEntries(formData));
 
   if (!parsed.success) {
-    return fail(parsed.error.issues.map((i) => i.message).join(", "));
+    return fail({
+      code: "VALIDATION",
+      message: parsed.error.issues[0]?.message ?? "Invalid input",
+    });
   }
 
   try {
     const eventId = await createEvent(parsed.data);
 
-    // 🔥 non-blocking background translations
-    scheduleEventTranslations({
+    // fire and forget
+    seedEventTranslations({
       eventId,
       sourceLocale: parsed.data.original_language,
-    });
+    }).catch(() => {});
 
     return ok({
       eventId,
       locale: parsed.data.original_language,
     });
   } catch (err) {
-    return fail(err instanceof Error ? err.message : "Failed to create event");
-  }
-}
+    if (err instanceof Error && err.message === "Not authenticated") {
+      return fail({ code: "AUTH", message: "Please login again" });
+    }
 
-export async function triggerEventTranslation(
-  eventId: string,
-  sourceLocale: string,
-  targetLocale: string,
-) {
-  // Fire-and-forget (hackathon-safe)
-  requestEventTranslation(eventId, sourceLocale, targetLocale).catch((err) => {
-    console.error("Translation failed", err);
-  });
+    return fail({
+      code: "UNKNOWN",
+      message: "Failed to create event",
+    });
+  }
 }

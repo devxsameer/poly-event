@@ -49,14 +49,16 @@
     "and": "and",
     "privacy_policy": "Privacy Policy",
     "errors": {
-      "email_invalid": "Please enter a valid email address",
-      "otp_invalid": "Enter the 6-digit code sent to your email",
-      "otp_expired": "This code has expired. Please request a new one.",
-      "invalid_credentials": "Invalid login credentials",
-      "email_not_confirmed": "Please confirm your email address first",
-      "too_many_requests": "Too many attempts. Please try again later.",
-      "unauthorized": "You are not authorized to perform this action",
-      "unknown": "Something went wrong. Please try again."
+      "INVALID_CREDENTIALS": "Invalid login credentials",
+      "OTP_INVALID": "Enter the 6-digit code sent to your email",
+      "OTP_EXPIRED": "This code has expired. Please request a new one.",
+      "EMAIL_NOT_CONFIRMED": "Please confirm your email address first",
+      "TOO_MANY_REQUESTS": "Too many attempts. Please try again later.",
+      "UNAUTHORIZED": "You are not authorized to perform this action",
+      "SESSION_EXPIRED": "Your session has expired. Please sign in again.",
+      "WEAK_PASSWORD": "Your password does not meet security requirements.",
+      "USER_BANNED": "Your account has been temporarily disabled.",
+      "UNKNOWN": "Something went wrong. Please try again."
     },
     "toast": {
       "code_sent": "Code sent!",
@@ -79,6 +81,7 @@
     "subtitle": "Browse upcoming events from around the world, automatically translated to your language.",
     "why_polyevent": "Why PolyEvent?",
     "built_for_global": "Built for global teams and communities",
+    "translation_in_progress": "Translation in Progress",
     "empty": {
       "title": "No events yet",
       "description": "Check back later for upcoming events, or create one yourself!"
@@ -86,6 +89,7 @@
     "card": {
       "original_language": "Original",
       "translating": "Translating...",
+      "translation_failed": "Translation failed",
       "view_event": "View event"
     },
     "detail": {

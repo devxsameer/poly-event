@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState, useEffect, useState } from "react";
+import { useActionState, useEffect, useMemo, startTransition } from "react";
 import {
   Loader2,
   MapPin,
@@ -11,6 +11,8 @@ import {
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -20,43 +22,67 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Card, CardContent } from "@/components/ui/card";
 
 import { Dictionary } from "@/features/i18n/dictionary.types";
+import { Locale } from "@/features/i18n/config";
 import { createEventAction } from "@/features/events/event.actions";
-import { ActionResult } from "@/features/shared/action-state";
+import {
+  CreateEventState,
+  initialCreateEventState,
+} from "@/features/events/event.types";
+import {
+  createEventSchema,
+  CreateEventInput,
+} from "@/features/events/event.schema";
+
+/* -------------------------------- utilities -------------------------------- */
+
+function toLocalDateTime(date: Date) {
+  const d = new Date(date);
+  d.setMinutes(d.getMinutes() - d.getTimezoneOffset());
+  return d.toISOString().slice(0, 16);
+}
+
+export function getMinStartTime() {
+  return toLocalDateTime(new Date());
+}
+
+export function getDefaultStartTime() {
+  return toLocalDateTime(new Date(Date.now() + 60 * 60 * 1000));
+}
+/* -------------------------------- component -------------------------------- */
 
 interface CreateEventFormProps {
-  initialLocale: string;
+  initialLocale: Locale;
   dict: Dictionary;
-}
-
-// Get minimum datetime (now) in local format for datetime-local input
-function getMinDateTime() {
-  const now = new Date();
-  now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
-  return now.toISOString().slice(0, 16);
-}
-
-// Get default datetime (1 hour from now) in local format
-function getDefaultDateTime() {
-  const date = new Date();
-  date.setHours(date.getHours() + 1);
-  date.setMinutes(0);
-  date.setMinutes(date.getMinutes() - date.getTimezoneOffset());
-  return date.toISOString().slice(0, 16);
 }
 
 export function CreateEventForm({ initialLocale, dict }: CreateEventFormProps) {
   const router = useRouter();
-  const [startTime, setStartTime] = useState(getDefaultDateTime);
-
-  const [state, action, pending] = useActionState<
-    ActionResult<{ eventId: string; locale: string }>,
-    FormData
-  >(createEventAction, { ok: false, error: "" });
-
   const t = dict.events.create;
+  const idempotencyKey = useMemo(() => crypto.randomUUID(), []);
+
+  const form = useForm<CreateEventInput>({
+    resolver: zodResolver(createEventSchema),
+    defaultValues: {
+      title: "",
+      description: "",
+      location: "",
+      end_time: "",
+      start_time: getDefaultStartTime(),
+      original_language: initialLocale,
+      idempotency_key: idempotencyKey,
+    },
+    mode: "onSubmit",
+  });
+
+  const [state, action, pending] = useActionState<CreateEventState, FormData>(
+    createEventAction,
+    initialCreateEventState,
+  );
+
+  const isSubmitting = pending || state.status === "success";
 
   useEffect(() => {
-    if (!state.ok) return;
+    if (state.status !== "success") return;
 
     toast.success(t.toast.success, {
       description: t.toast.success_description,
@@ -67,151 +93,143 @@ export function CreateEventForm({ initialLocale, dict }: CreateEventFormProps) {
   }, [state, router, t]);
 
   return (
-    <Card className="border-border/50 bg-card/30 backdrop-blur-sm shadow-xl overflow-hidden">
-      {/* Top highlight line */}
+    <Card className="border-border/50 bg-card/30 backdrop-blur-sm shadow-xl">
       <div className="h-1 bg-linear-to-r from-purple-500 via-blue-500 to-purple-500" />
 
-      <CardContent className="pt-8 pb-8">
-        <form action={action} className="space-y-6">
-          {/* Hidden field: use current UI locale as event language */}
-          <input type="hidden" name="original_language" value={initialLocale} />
+      <CardContent className="py-8">
+        <form
+          className="space-y-6"
+          onSubmit={form.handleSubmit((data) => {
+            console.log(data);
+            const fd = new FormData();
+            for (const [key, value] of Object.entries(data)) {
+              if (value !== null && value !== undefined) {
+                fd.append(key, String(value));
+              }
+            }
+            startTransition(() => {
+              action(fd);
+            });
+          })}
+        >
+          <input type="hidden" {...form.register("original_language")} />
+          <input type="hidden" {...form.register("idempotency_key")} />
 
-          {!state.ok && state.error && (
-            <Alert variant="destructive" className="flex items-start gap-3">
-              <AlertCircle className="h-4 w-4 mt-0.5 shrink-0" />
-              <AlertDescription>{state.error}</AlertDescription>
+          {state.status === "error" && (
+            <Alert variant="destructive" className="flex gap-3">
+              <AlertCircle className="h-4 w-4 shrink-0 mt-0.5" />
+              <AlertDescription>{state.error.message}</AlertDescription>
             </Alert>
           )}
 
           {/* Title */}
-          <div className="space-y-2">
-            <Label
-              htmlFor="title"
-              className="flex items-center gap-2 text-sm font-medium"
-            >
-              <Type className="h-4 w-4 text-muted-foreground" />
-              {t.title_label}
-              <span className="text-destructive">*</span>
-            </Label>
+          <Field
+            label={t.title_label}
+            icon={<Type className="h-4 w-4" />}
+            error={form.formState.errors.title?.message}
+            required
+          >
             <Input
-              id="title"
-              name="title"
-              placeholder={t.title_placeholder}
-              required
-              minLength={3}
-              maxLength={100}
-              disabled={pending}
+              {...form.register("title")}
               autoFocus
-              className="h-12 bg-secondary/30 border-border/50 focus:border-foreground/50"
+              disabled={isSubmitting}
+              placeholder={t.title_placeholder}
+              className="h-12"
             />
-          </div>
+          </Field>
 
           {/* Description */}
-          <div className="space-y-2">
-            <Label
-              htmlFor="description"
-              className="flex items-center gap-2 text-sm font-medium"
-            >
-              <FileText className="h-4 w-4 text-muted-foreground" />
-              {t.description_label}
-              <span className="text-destructive">*</span>
-            </Label>
+          <Field
+            label={t.description_label}
+            icon={<FileText className="h-4 w-4" />}
+            error={form.formState.errors.description?.message}
+            required
+          >
             <Textarea
-              id="description"
-              name="description"
+              {...form.register("description")}
               rows={5}
-              required
-              minLength={10}
-              disabled={pending}
+              disabled={isSubmitting}
               placeholder={t.description_placeholder}
-              className="bg-secondary/30 border-border/50 focus:border-foreground/50 resize-none"
+              className="resize-none"
             />
-          </div>
+          </Field>
 
-          {/* Date/Time Grid */}
+          {/* Date / Time */}
           <div className="space-y-2">
             <Label className="flex items-center gap-2 text-sm font-medium">
               <Clock className="h-4 w-4 text-muted-foreground" />
               {t.start_time_label} / {t.end_time_label}
             </Label>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="space-y-1.5">
-                <Label
-                  htmlFor="start_time"
-                  className="text-xs text-muted-foreground"
-                >
-                  {t.start_time_label}
-                  <span className="text-destructive ml-0.5">*</span>
-                </Label>
-                <Input
-                  id="start_time"
-                  type="datetime-local"
-                  name="start_time"
-                  required
-                  min={getMinDateTime()}
-                  value={startTime}
-                  onChange={(e) => setStartTime(e.target.value)}
-                  disabled={pending}
-                  className="h-12 bg-secondary/30 border-border/50 focus:border-foreground/50"
-                />
-              </div>
-              <div className="space-y-1.5">
-                <Label
-                  htmlFor="end_time"
-                  className="text-xs text-muted-foreground"
-                >
-                  {t.end_time_label}
-                  <span className="text-muted-foreground/50 ml-1 text-[10px]">
-                    (optional)
-                  </span>
-                </Label>
-                <Input
-                  id="end_time"
-                  type="datetime-local"
-                  name="end_time"
-                  min={startTime}
-                  disabled={pending}
-                  className="h-12 bg-secondary/30 border-border/50 focus:border-foreground/50"
-                />
-              </div>
+
+            <div className="grid sm:grid-cols-2 gap-4">
+              <Input
+                type="datetime-local"
+                min={getMinStartTime()}
+                disabled={isSubmitting}
+                {...form.register("start_time")}
+              />
+              <Input
+                type="datetime-local"
+                disabled={isSubmitting}
+                {...form.register("end_time")}
+              />
             </div>
+
+            {form.formState.errors.end_time && (
+              <p className="text-xs text-destructive">
+                {form.formState.errors.end_time.message}
+              </p>
+            )}
           </div>
 
           {/* Location */}
-          <div className="space-y-2">
-            <Label
-              htmlFor="location"
-              className="flex items-center gap-2 text-sm font-medium"
-            >
-              <MapPin className="h-4 w-4 text-muted-foreground" />
-              {t.location_label}
-              <span className="text-muted-foreground/50 ml-1 text-[10px]">
-                (optional)
-              </span>
-            </Label>
+          <Field label={t.location_label} icon={<MapPin className="h-4 w-4" />}>
             <Input
-              id="location"
-              name="location"
+              {...form.register("location")}
+              disabled={isSubmitting}
               placeholder={t.location_placeholder}
-              disabled={pending}
-              className="h-12 bg-secondary/30 border-border/50 focus:border-foreground/50"
             />
-          </div>
+          </Field>
 
-          {/* Submit */}
-          <div className="pt-4">
-            <Button
-              type="submit"
-              disabled={pending}
-              size="lg"
-              className="w-full h-12 rounded-xl shadow-lg shadow-primary/20 font-medium"
-            >
-              {pending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-              {pending ? t.submitting : t.submit}
-            </Button>
-          </div>
+          <Button
+            type="submit"
+            size="lg"
+            disabled={isSubmitting}
+            className="w-full h-12 rounded-xl"
+          >
+            {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+            {isSubmitting ? t.submitting : t.submit}
+          </Button>
         </form>
       </CardContent>
     </Card>
+  );
+}
+
+/* ------------------------------ small helper ------------------------------ */
+
+function Field({
+  label,
+  icon,
+  error,
+  required,
+  children,
+}: {
+  label: string;
+  icon?: React.ReactNode;
+  error?: string;
+  required?: boolean;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="space-y-2">
+      <Label className="flex items-center gap-2 text-sm font-medium">
+        {icon}
+        {label}
+        {required && <span className="text-destructive">*</span>}
+      </Label>
+      {children}
+      {error && <p className="text-xs text-destructive">{error}</p>}
+    </div>
   );
 }

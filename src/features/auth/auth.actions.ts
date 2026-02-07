@@ -9,15 +9,30 @@ import {
   signOutService,
 } from "./auth.service";
 import { sendOtpSchema, verifyOtpSchema } from "./auth.schema";
-import { fail, ok } from "../shared/action-state";
+import { ActionState, fail, ok } from "../shared/action-state";
 import { AUTH_ERROR_KEYS, AuthError, AuthErrorKey } from "./auth.errors";
+import { sanitizeNext } from "./auth.utils";
 
-export async function signInWithGitHub(formData: FormData) {
-  const next = formData.get("next")?.toString() ?? "/";
+export async function signInWithGitHub(
+  _prevState: unknown,
+  formData: FormData,
+): Promise<ActionState<void, AuthErrorKey>> {
+  const rawNext = formData.get("next")?.toString() ?? null;
+  const next = sanitizeNext(rawNext);
+  let oauthUrl;
+  try {
+    oauthUrl = await signInWithGitHubService(next);
+  } catch (err) {
+    if (err instanceof AuthError) {
+      return fail(err.key);
+    }
 
-  const oauthUrl = await signInWithGitHubService(next);
+    console.error("signInWithGitHub failed", err);
+    return fail(AUTH_ERROR_KEYS.UNKNOWN as AuthErrorKey);
+  }
   redirect(oauthUrl);
 }
+
 export async function sendOTP(_prevState: unknown, formData: FormData) {
   const parsed = sendOtpSchema.safeParse({
     email: formData.get("email"),
@@ -33,11 +48,14 @@ export async function sendOTP(_prevState: unknown, formData: FormData) {
   } catch (err) {
     if (err instanceof AuthError) return fail(err.key);
     console.error("sendOTP failed", err);
-    return fail(AUTH_ERROR_KEYS.UNKNOWN);
+    return fail(AUTH_ERROR_KEYS.UNKNOWN as AuthErrorKey);
   }
 }
 
-export async function verifyOTP(_prevState: unknown, formData: FormData) {
+export async function verifyOTP(
+  _prevState: unknown,
+  formData: FormData,
+): Promise<ActionState<void, AuthErrorKey>> {
   const parsed = verifyOtpSchema.safeParse({
     email: formData.get("email"),
     code: formData.get("code"),
@@ -50,12 +68,12 @@ export async function verifyOTP(_prevState: unknown, formData: FormData) {
   try {
     await verifyOtpService(parsed.data.email, parsed.data.code);
     revalidatePath("/", "layout");
-    redirect(`/${formData.get("locale")}?auth_success=1`);
   } catch (err) {
     if (err instanceof AuthError) return fail(err.key as AuthErrorKey);
     console.error("verifyOTP failed", err);
-    return fail(AUTH_ERROR_KEYS.UNKNOWN);
+    return fail(AUTH_ERROR_KEYS.UNKNOWN as AuthErrorKey);
   }
+  redirect(`/en?auth_success=1`);
 }
 
 export async function signOut(locale?: string) {

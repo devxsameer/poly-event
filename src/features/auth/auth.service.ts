@@ -2,7 +2,7 @@
 
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { mapSupabaseAuthError } from "./supabase-error.mapper";
-import { AuthError } from "./auth.errors";
+import { AUTH_ERROR_KEYS, AuthError } from "./auth.errors";
 
 export async function signInWithGitHubService(next: string) {
   const supabase = await createServerSupabaseClient();
@@ -16,8 +16,12 @@ export async function signInWithGitHubService(next: string) {
     },
   });
 
-  if (error) throw new Error(error.message);
-  if (!data.url) throw new Error("OAuth URL not returned");
+  if (error) {
+    throw new AuthError(mapSupabaseAuthError(error));
+  }
+  if (!data.url) {
+    throw new AuthError(AUTH_ERROR_KEYS.UNKNOWN);
+  }
 
   return data.url;
 }

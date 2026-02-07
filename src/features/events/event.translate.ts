@@ -1,85 +1,53 @@
 "use server";
 
 import { createServerSupabaseClient } from "@/lib/supabase/server";
-import { localizeObject } from "@/lib/lingo";
 import { locales } from "@/features/i18n/config";
-import {
-  canTranslate,
-  markTranslationFailure,
-  markTranslationSuccess,
-} from "../translation/translation.guard";
+import { processEventTranslation } from "./event.worker";
 
-export async function scheduleEventTranslations({
+export async function seedEventTranslations({
   eventId,
   sourceLocale,
 }: {
   eventId: string;
   sourceLocale: string;
 }) {
-  for (const target of locales) {
-    if (target === sourceLocale) continue;
+  const supabase = await createServerSupabaseClient();
 
-    requestEventTranslation(eventId, sourceLocale, target).catch((err) => {
-      console.error("[event-translation-failed]", {
-        eventId,
-        target,
-        err,
-      });
-    });
-  }
+  const rows = locales
+    .filter((l) => l !== sourceLocale)
+    .map((locale) => ({
+      event_id: eventId,
+      locale,
+      status: "pending",
+    }));
+
+  await supabase
+    .from("event_translations")
+    .upsert(rows, { onConflict: "event_id,locale" });
+
+  // Fire-and-forget background work
+  queueMicrotask(() => {
+    for (const { locale } of rows) {
+      processEventTranslation(eventId, sourceLocale, locale).catch(() => {});
+    }
+  });
 }
 
-export async function requestEventTranslation(
+export async function retryEventTranslation(
   eventId: string,
   sourceLocale: string,
   targetLocale: string,
 ) {
-  if (sourceLocale === targetLocale) return;
-
   const supabase = await createServerSupabaseClient();
 
-  const { data: exists } = await supabase
+  await supabase
     .from("event_translations")
-    .select("id")
+    .update({
+      status: "pending",
+      last_error: null,
+    })
     .eq("event_id", eventId)
-    .eq("locale", targetLocale)
-    .maybeSingle();
+    .eq("locale", targetLocale);
 
-  if (exists) return;
-
-  const { data: event } = await supabase
-    .from("events")
-    .select("title, description")
-    .eq("id", eventId)
-    .single();
-
-  if (!event) return;
-
-  const key = `event:${eventId}:${targetLocale}`;
-
-  const guard = canTranslate(key, `${event.title} ${event.description}`);
-
-  if (!guard.allowed) {
-    console.warn("[translation-skipped]", guard.reason);
-    return;
-  }
-
-  try {
-    const translated = await localizeObject(
-      { title: event.title, description: event.description },
-      { sourceLocale, targetLocale },
-    );
-
-    await supabase.from("event_translations").insert({
-      event_id: eventId,
-      locale: targetLocale,
-      translated_title: translated.title,
-      translated_description: translated.description,
-    });
-
-    markTranslationSuccess(key);
-  } catch (err) {
-    markTranslationFailure(key);
-    throw err;
-  }
+  processEventTranslation(eventId, sourceLocale, targetLocale).catch(() => {});
 }
