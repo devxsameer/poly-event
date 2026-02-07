@@ -1,7 +1,7 @@
 "use server";
 
 import { createServerSupabaseClient } from "@/lib/supabase/server";
-import { CreateEventInput } from "./event.types";
+import { CreateEventInput } from "./event.schema";
 
 export async function createEvent(input: CreateEventInput) {
   const supabase = await createServerSupabaseClient();

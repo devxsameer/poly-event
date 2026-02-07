@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState, useEffect, useMemo, startTransition } from "react";
+import { useActionState, useEffect, startTransition } from "react";
 import {
   Loader2,
   MapPin,
@@ -58,7 +58,6 @@ interface CreateEventFormProps {
 export function CreateEventForm({ initialLocale, dict }: CreateEventFormProps) {
   const router = useRouter();
   const t = dict.events.create;
-  const idempotencyKey = useMemo(() => crypto.randomUUID(), []);
 
   const form = useForm<CreateEventInput>({
     resolver: zodResolver(createEventSchema),
@@ -69,7 +68,6 @@ export function CreateEventForm({ initialLocale, dict }: CreateEventFormProps) {
       end_time: "",
       start_time: getDefaultStartTime(),
       original_language: initialLocale,
-      idempotency_key: idempotencyKey,
     },
     mode: "onSubmit",
   });
@@ -113,7 +111,6 @@ export function CreateEventForm({ initialLocale, dict }: CreateEventFormProps) {
           })}
         >
           <input type="hidden" {...form.register("original_language")} />
-          <input type="hidden" {...form.register("idempotency_key")} />
 
           {state.status === "error" && (
             <Alert variant="destructive" className="flex gap-3">

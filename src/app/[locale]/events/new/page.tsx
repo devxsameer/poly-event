@@ -6,6 +6,7 @@ import { LocalizedLink } from "@/components/localized-link";
 import { PageWrapper } from "@/components/layout/page-wrapper";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Sparkles } from "lucide-react";
+import { Locale } from "@/features/i18n/config";
 
 export default async function NewEventPage({
   params,
@@ -61,7 +62,7 @@ export default async function NewEventPage({
       </div>
 
       {/* Form */}
-      <CreateEventForm initialLocale={locale} dict={dict} />
+      <CreateEventForm initialLocale={locale as Locale} dict={dict} />
     </PageWrapper>
   );
 }

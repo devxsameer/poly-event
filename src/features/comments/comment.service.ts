@@ -1,7 +1,7 @@
 "use server";
 
 import { createServerSupabaseClient } from "@/lib/supabase/server";
-import { CreateCommentInput } from "./comment.types";
+import { CreateCommentInput } from "./comment.schema";
 
 export async function createComment(input: CreateCommentInput) {
   const supabase = await createServerSupabaseClient();

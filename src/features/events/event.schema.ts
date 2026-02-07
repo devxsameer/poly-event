@@ -17,7 +17,8 @@ export const createEventSchema = z
     description: z
       .string()
       .min(1, "Description is required")
-      .min(10, "Description must be at least 10 characters"),
+      .min(10, "Description must be at least 10 characters")
+      .max(1000, "Description must be at most 1000 characters"),
     start_time: z
       .string()
       .min(1, "Start time is required")

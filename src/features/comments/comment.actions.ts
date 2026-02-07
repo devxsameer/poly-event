@@ -1,65 +1,64 @@
 "use server";
 
+import { createServiceSupabaseClient } from "@/lib/supabase/service";
 import { createCommentSchema } from "./comment.schema";
 import { createComment } from "./comment.service";
-import { requestCommentTranslation } from "./comment.translate";
-import { ActionResult, ok, fail } from "@/features/shared/action-state";
+import { lingo } from "@/lib/lingo";
 
-// Legacy type for backwards compatibility
-export type CreateCommentState =
-  | { status: "idle" }
-  | { status: "error"; message: string }
-  | { status: "success"; commentId: string };
-
-/**
- * Create a new comment with ActionResult return type
- */
-export async function createCommentAction(
-  _prev: ActionResult<{ commentId: string }>,
-  formData: FormData,
-): Promise<ActionResult<{ commentId: string }>> {
-  const parsed = createCommentSchema.safeParse(Object.fromEntries(formData));
+export async function createCommentAction(input: {
+  eventId: string;
+  content: string;
+  originalLanguage: string;
+}): Promise<{ commentId: string }> {
+  const parsed = createCommentSchema.safeParse({
+    event_id: input.eventId,
+    content: input.content,
+    original_language: input.originalLanguage,
+  });
 
   if (!parsed.success) {
-    return fail(parsed.error.issues[0].message);
+    throw new Error(parsed.error.issues[0].message);
   }
 
-  try {
-    const commentId = await createComment(parsed.data);
-    return ok({ commentId });
-  } catch (err) {
-    return fail(err instanceof Error ? err.message : "Failed to add comment");
-  }
+  const commentId = await createComment(parsed.data);
+  return { commentId };
 }
 
-/**
- * Trigger translation for a comment to a target locale
- * Fire-and-forget - doesn't wait for completion
- */
-export async function triggerCommentTranslation(
-  commentId: string,
-  sourceLocale: string,
-  targetLocale: string,
-): Promise<void> {
-  // Fire-and-forget with error logging
-  requestCommentTranslation(commentId, sourceLocale, targetLocale).catch(
-    (err) => {
-      console.error(`Translation failed for comment ${commentId}:`, err);
+export async function translateCommentAction({
+  commentId,
+  targetLocale,
+}: {
+  commentId: string;
+  targetLocale: string;
+}): Promise<{ translated: string }> {
+  const supabase = await createServiceSupabaseClient();
+
+  const { data: comment } = await supabase
+    .from("comments")
+    .select("content, original_language")
+    .eq("id", commentId)
+    .single();
+
+  if (!comment) throw new Error("Comment not found");
+  if (comment.original_language === targetLocale) {
+    return { translated: comment.content };
+  }
+
+  const translated = await lingo.localizeText(comment.content, {
+    sourceLocale: comment.original_language,
+    targetLocale,
+  });
+
+  await supabase.from("comment_translations").upsert(
+    {
+      comment_id: commentId,
+      locale: targetLocale,
+      translated_content: translated,
+      status: "completed",
+      last_error: null,
     },
+    { onConflict: "comment_id,locale" },
   );
-}
 
-/**
- * Trigger translations for all target locales
- */
-export async function triggerAllCommentTranslations(
-  commentId: string,
-  sourceLocale: string,
-  targetLocales: string[],
-): Promise<void> {
-  await Promise.allSettled(
-    targetLocales.map((targetLocale) =>
-      requestCommentTranslation(commentId, sourceLocale, targetLocale),
-    ),
-  );
+  return { translated };
 }

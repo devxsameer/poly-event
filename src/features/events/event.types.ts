@@ -1,3 +1,4 @@
+import { Locale } from "@/features/i18n/config";
 import { ActionState } from "../shared/action-state";
 
 export type EventBase = {
@@ -10,12 +11,8 @@ export type EventBase = {
   location: string | null;
 };
 
-export type DbTranslationStatus = "pending" | "completed" | "failed";
-export type UiTranslationStatus = DbTranslationStatus | "translating";
-export type TranslationStatus = DbTranslationStatus | "missing";
-
 export type EventWithTranslation = EventBase & {
-  translationStatus: TranslationStatus;
+  hasTranslation: boolean;
 };
 
 export type RawEvent = {
@@ -35,19 +32,30 @@ export type RawEvent = {
 
 type CreateEventSuccess = {
   eventId: string;
-  locale:
-    | "en"
-    | "es"
-    | "fr"
-    | "de"
-    | "pt"
-    | "hi"
-    | "ar"
-    | "ja"
-    | "zh-Hans"
-    | "ko"
-    | "ru"
-    | "id";
+  locale: Locale;
+};
+export type EventTranslation = {
+  locale: string;
+  translated_title: string | null;
+  translated_description: string | null;
+  status: string;
+  last_error: string | null;
+};
+export type EventRowWithTranslations = {
+  id: string;
+  title: string;
+  description: string;
+  original_language: string;
+  start_time: string; // timestamptz → string
+  end_time: string | null;
+  location: string | null;
+  event_translations: EventTranslation[] | null;
+};
+export type EventWithResolvedTranslation = Omit<
+  EventRowWithTranslations,
+  "event_translations"
+> & {
+  translation?: EventTranslation;
 };
 
 type CreateEventError =

@@ -20,14 +20,17 @@ export async function getCommentsForEvent(
       created_at,
       comment_translations (
         locale,
-        translated_content
+        translated_content,
+        status
       )
     `,
     )
     .eq("event_id", eventId)
     .order("created_at", { ascending: true });
 
-  if (error) throw new Error(error.message);
+  if (error || !data) {
+    throw new Error("Failed to load comments");
+  }
 
   return data.map((comment) => {
     const translation = comment.comment_translations?.find(
@@ -40,10 +43,13 @@ export async function getCommentsForEvent(
       original_language: comment.original_language,
       created_at: comment.created_at,
 
-      content: translation?.translated_content ?? comment.content,
       original_content: comment.content,
+      content:
+        translation?.status === "completed"
+          ? translation.translated_content!
+          : comment.content,
 
-      hasTranslation: Boolean(translation),
+      translation,
     };
   });
 }

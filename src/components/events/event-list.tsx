@@ -13,7 +13,7 @@ export function EventList({ events, dict }: EventListProps) {
   }
 
   return (
-    <div className="grid gap-4 sm:gap-6 md:grid-cols-2">
+   <div className="grid gap-4 sm:gap-6 md:grid-cols-2">
       {events.map((event, index) => (
         <EventCard
           key={event.id}

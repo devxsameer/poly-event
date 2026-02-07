@@ -12,6 +12,7 @@ import { defaultLocale, locales, rtlLocales } from "@/features/i18n/config";
 import { Toaster } from "sonner";
 import { getDictionary } from "@/features/i18n/get-dictionary";
 import { Suspense } from "react";
+import { Providers } from "./providers";
 
 const outfit = Outfit({
   variable: "--font-sans",
@@ -79,7 +80,7 @@ export default async function LocaleLayout({
         </Suspense>
         <Navbar user={user} dict={dict} />
         <Toaster theme="dark" />
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

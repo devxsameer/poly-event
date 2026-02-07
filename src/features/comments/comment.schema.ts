@@ -6,3 +6,5 @@ export const createCommentSchema = z.object({
   content: z.string().min(1).max(500),
   original_language: z.enum(locales),
 });
+
+export type CreateCommentInput = z.infer<typeof createCommentSchema>;

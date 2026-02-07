@@ -1,6 +1,5 @@
 import { getEventsForLocale } from "@/features/events/event.queries";
 import { EventList } from "@/components/events/event-list";
-import { triggerEventTranslation } from "@/features/events/event.actions";
 import { getDictionary } from "@/features/i18n/get-dictionary";
 import { LocalizedLink } from "@/components/localized-link";
 import { PageWrapper } from "@/components/layout/page-wrapper";
@@ -18,14 +17,6 @@ export default async function EventsPage({
     getDictionary(locale),
   ]);
 
-  // 🔥 Opportunistic background translations
-  for (const event of events) {
-    if (!event.hasTranslation && event.original_language !== locale) {
-      triggerEventTranslation(event.id, event.original_language, locale).catch(
-        () => {},
-      );
-    }
-  }
 
   return (
     <PageWrapper size="lg">

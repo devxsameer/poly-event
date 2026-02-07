@@ -1,12 +1,12 @@
 "use server";
 
 import { createServerSupabaseClient } from "@/lib/supabase/server";
-import { localizeObject } from "@/lib/lingo";
 import {
   canTranslate,
   markTranslationFailure,
   markTranslationSuccess,
 } from "../translation/translation.guard";
+import { lingo } from "@/lib/lingo";
 
 export async function processEventTranslation(
   eventId: string,
@@ -50,7 +50,7 @@ export async function processEventTranslation(
   }
 
   try {
-    const translated = await localizeObject(
+    const translated = await lingo.localizeObject(
       { title: event.title, description: event.description },
       { sourceLocale, targetLocale },
     );
