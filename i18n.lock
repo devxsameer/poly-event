@@ -40,14 +40,16 @@ checksums:
     auth/terms_of_service: 5add91f519e39025708e54a7eb7a9fc5
     auth/and: ce8b9bb44f031705708a70e068bb73c8
     auth/privacy_policy: 7459744a63ef8af4e517a09024bd7c08
-    auth/errors/email_invalid: 8de4bc8832b11b380bc4cbcedc16e48b
-    auth/errors/otp_invalid: a9a399f1ae22299bd0949fd0355aa056
-    auth/errors/otp_expired: 57eb38d63d1afdceb68e4323185e24c5
-    auth/errors/invalid_credentials: 0c4fab95457c398bd2edc98a4c5ca18a
-    auth/errors/email_not_confirmed: ecb7bc5dd1cf512d09c32417bda4fc09
-    auth/errors/too_many_requests: ebd5ef1e5adc8d2cd3bbe15862d12453
-    auth/errors/unauthorized: c08e20c4111356f0c2e5aa218342fe43
-    auth/errors/unknown: c62a7718d9a1e9c4ffb707807550f836
+    auth/errors/INVALID_CREDENTIALS: 0c4fab95457c398bd2edc98a4c5ca18a
+    auth/errors/OTP_INVALID: a9a399f1ae22299bd0949fd0355aa056
+    auth/errors/OTP_EXPIRED: 57eb38d63d1afdceb68e4323185e24c5
+    auth/errors/EMAIL_NOT_CONFIRMED: ecb7bc5dd1cf512d09c32417bda4fc09
+    auth/errors/TOO_MANY_REQUESTS: ebd5ef1e5adc8d2cd3bbe15862d12453
+    auth/errors/UNAUTHORIZED: c08e20c4111356f0c2e5aa218342fe43
+    auth/errors/SESSION_EXPIRED: ed84853131ffadd4393b29b67d697176
+    auth/errors/WEAK_PASSWORD: 335d96ca5e94e9c086113ba5438b4882
+    auth/errors/USER_BANNED: a77a982c7f1215d49a48dbfd730fb770
+    auth/errors/UNKNOWN: c62a7718d9a1e9c4ffb707807550f836
     auth/toast/code_sent: f3fcb73dc0076404b1396322c98797ff
     auth/toast/check_inbox: 075a22441449f91a6752aa042ac77bbb
     auth/toast/welcome_back: 69eb28c44f7168b1df0455ad2a62588c
@@ -64,10 +66,12 @@ checksums:
     events/subtitle: b3c601001071ef64f6bad47387594966
     events/why_polyevent: 4c8f04fd1c6493e290d4ef6e334509bc
     events/built_for_global: e6fe1aff8d5ccb6ba42239a4bef87301
+    events/translation_in_progress: a7adfe7f710ae621b63fe97c18c6e322
     events/empty/title: 02eb8664d40259a4c62bb5657f3c7d01
     events/empty/description: 2f5af3dc58fb1bad84b7d6f2695760b9
     events/card/original_language: 7e55782bdf7cb49f5616b326c003c278
     events/card/translating: 602b092655724238f713953e906c9032
+    events/card/translation_failed: fd356a173d0abde7a0fc660394954cc7
     events/card/view_event: b8fa67110edd21eb7db172a781275224
     events/detail/original_language: 736c2e3329208b53e977b01cfaebcebc
     events/detail/translation_pending: 39b39e5f1925c6b9516475abc79f685a
