@@ -46,14 +46,16 @@
     "and": "dan",
     "privacy_policy": "Kebijakan privasi",
     "errors": {
-      "email_invalid": "Silakan masukkan alamat email yang valid",
-      "otp_invalid": "Masukkan kode 6 digit yang dikirim ke email Anda",
-      "otp_expired": "Kode ini telah kedaluwarsa. Silakan minta kode baru.",
-      "invalid_credentials": "Kredensial login tidak valid",
-      "email_not_confirmed": "Silakan konfirmasi alamat email Anda terlebih dahulu",
-      "too_many_requests": "Terlalu banyak percobaan. Silakan coba lagi nanti.",
-      "unauthorized": "Anda tidak memiliki izin untuk melakukan tindakan ini",
-      "unknown": "Terjadi kesalahan. Silakan coba lagi."
+      "INVALID_CREDENTIALS": "Kredensial login tidak valid",
+      "OTP_INVALID": "Masukkan kode 6 digit yang dikirim ke email Anda",
+      "OTP_EXPIRED": "Kode ini telah kedaluwarsa. Silakan minta kode baru.",
+      "EMAIL_NOT_CONFIRMED": "Silakan konfirmasi alamat email Anda terlebih dahulu",
+      "TOO_MANY_REQUESTS": "Terlalu banyak percobaan. Silakan coba lagi nanti.",
+      "UNAUTHORIZED": "Anda tidak memiliki izin untuk melakukan tindakan ini",
+      "SESSION_EXPIRED": "Sesi Anda telah kedaluwarsa. Silakan masuk kembali.",
+      "WEAK_PASSWORD": "Kata sandi Anda tidak memenuhi persyaratan keamanan.",
+      "USER_BANNED": "Akun Anda telah dinonaktifkan sementara.",
+      "UNKNOWN": "Terjadi kesalahan. Silakan coba lagi."
     },
     "toast": {
       "code_sent": "Kode terkirim!",
@@ -75,6 +77,7 @@
     "subtitle": "Jelajahi acara mendatang dari seluruh dunia, diterjemahkan secara otomatis ke bahasa Anda.",
     "why_polyevent": "Mengapa PolyEvent?",
     "built_for_global": "Dibuat untuk tim dan komunitas global",
+    "translation_in_progress": "Terjemahan sedang berlangsung",
     "empty": {
       "title": "Belum ada acara",
       "description": "Periksa kembali nanti untuk acara mendatang, atau buat sendiri!"
@@ -82,6 +85,7 @@
     "card": {
       "original_language": "Asli",
       "translating": "Menerjemahkan...",
+      "translation_failed": "Terjemahan gagal",
       "view_event": "Lihat acara"
     },
     "detail": {

@@ -46,14 +46,16 @@
     "and": "e",
     "privacy_policy": "Política de privacidade",
     "errors": {
-      "email_invalid": "Por favor, insira um endereço de email válido",
-      "otp_invalid": "Insira o código de 6 dígitos enviado para o seu email",
-      "otp_expired": "Este código expirou. Por favor, solicite um novo.",
-      "invalid_credentials": "Credenciais de login inválidas",
-      "email_not_confirmed": "Por favor, confirme primeiro o seu endereço de email",
-      "too_many_requests": "Demasiadas tentativas. Por favor, tente novamente mais tarde.",
-      "unauthorized": "Não está autorizado a realizar esta ação",
-      "unknown": "Algo correu mal. Por favor, tente novamente."
+      "INVALID_CREDENTIALS": "Credenciais de login inválidas",
+      "OTP_INVALID": "Insira o código de 6 dígitos enviado para o seu email",
+      "OTP_EXPIRED": "Este código expirou. Por favor, solicite um novo.",
+      "EMAIL_NOT_CONFIRMED": "Por favor, confirme primeiro o seu endereço de email",
+      "TOO_MANY_REQUESTS": "Demasiadas tentativas. Por favor, tente novamente mais tarde.",
+      "UNAUTHORIZED": "Não está autorizado a realizar esta ação",
+      "SESSION_EXPIRED": "A sua sessão expirou. Por favor, inicie sessão novamente.",
+      "WEAK_PASSWORD": "A sua palavra-passe não cumpre os requisitos de segurança.",
+      "USER_BANNED": "A sua conta foi temporariamente desativada.",
+      "UNKNOWN": "Algo correu mal. Por favor, tente novamente."
     },
     "toast": {
       "code_sent": "Código enviado!",
@@ -75,6 +77,7 @@
     "subtitle": "Navegue pelos próximos eventos de todo o mundo, traduzidos automaticamente para o seu idioma.",
     "why_polyevent": "Porquê PolyEvent?",
     "built_for_global": "Criado para equipas e comunidades globais",
+    "translation_in_progress": "Tradução em curso",
     "empty": {
       "title": "Ainda não há eventos",
       "description": "Volte mais tarde para ver os próximos eventos ou crie um você mesmo!"
@@ -82,6 +85,7 @@
     "card": {
       "original_language": "Original",
       "translating": "A traduzir...",
+      "translation_failed": "A tradução falhou",
       "view_event": "Ver evento"
     },
     "detail": {
